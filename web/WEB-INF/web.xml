@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+    <servlet>
+        <servlet-name>Connection_Db</servlet-name>
+        <servlet-class>Children_Vax.Connection_Db</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>Children_Vax.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addChild</servlet-name>
+        <servlet-class>Children_Vax.addChild</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addUser</servlet-name>
+        <servlet-class>Children_Vax.addUser</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Connection_Db</servlet-name>
+        <url-pattern>/Connection_Db</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addChild</servlet-name>
+        <url-pattern>/addChild</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addUser</servlet-name>
+        <url-pattern>/addUser</url-pattern>
+    </servlet-mapping>
+</web-app>
