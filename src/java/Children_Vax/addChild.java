@@ -27,7 +27,6 @@ public class addChild extends HttpServlet {
             Connection conn = Connection_Db.conn;
             
             if (centreVax != null && !centreVax.isEmpty()) {
-                // Retrieve CentreVax_id from the database
                 String selectCentreIdQuery = "SELECT idC FROM `vax`.`CentreVax` WHERE nomC = ?";
                 PreparedStatement selectCentreIdStatement = conn.prepareStatement(selectCentreIdQuery);
                 selectCentreIdStatement.setString(1, centreVax);

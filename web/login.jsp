@@ -25,7 +25,7 @@
             margin-bottom: 25px;
         }
        .logo img {
-            height: 55px; /* Adjust the height of the logo as needed */
+            height: 55px;
         }
         form{
             width: 250px;

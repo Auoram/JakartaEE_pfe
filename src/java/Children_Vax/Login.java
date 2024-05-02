@@ -15,8 +15,11 @@ public class Login extends HttpServlet {
 
         if (isAuthenticated) {
             HttpSession session = request.getSession();
-            String firstName = getFirstName(email); // Assuming you have a method to retrieve the first name
+            String firstName = getFirstName(email);
+            int pId = getUserId(email);
             session.setAttribute("firstName", firstName);
+            session.setAttribute("email", email);
+            session.setAttribute("pId", pId);
             response.sendRedirect("dashboard.jsp");
         } else {
             request.setAttribute("msg", "Error. Please try again.");
@@ -43,6 +46,29 @@ public class Login extends HttpServlet {
         }
         return false;
     }
+    private int getUserId(String email) {
+        int pId = 1;
+        try {
+            Connection_Db.Connect();
+            Connection conn = Connection_Db.conn;
+            String sql = "SELECT idP FROM `vax`.`Parent` WHERE user_id =(Select id from `vax`.`User` where email=?)";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, email);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                pId = rs.getInt("idP");
+            }
+
+            rs.close();
+            pstmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return pId;
+    }
+    
     private String getFirstName(String email) {
         String firstName = "";
         try {

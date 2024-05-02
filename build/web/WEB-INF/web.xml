@@ -16,6 +16,10 @@
         <servlet-name>addUser</servlet-name>
         <servlet-class>Children_Vax.addUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>childProfile</servlet-name>
+        <servlet-class>Children_Vax.childProfile</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Connection_Db</servlet-name>
         <url-pattern>/Connection_Db</url-pattern>
@@ -31,5 +35,9 @@
     <servlet-mapping>
         <servlet-name>addUser</servlet-name>
         <url-pattern>/addUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>childProfile</servlet-name>
+        <url-pattern>/childProfile</url-pattern>
     </servlet-mapping>
 </web-app>
