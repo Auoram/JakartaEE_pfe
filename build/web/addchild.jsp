@@ -42,7 +42,8 @@
         input[type="email"],
 input[type="password"],
 input[type="text"],
-input[type="tel"] {
+input[type="tel"],
+input[type="date"]{
     display: block;
     width: calc(100% - 20px);
     padding: 10px;

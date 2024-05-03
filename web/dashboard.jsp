@@ -8,6 +8,9 @@
     String firstName = (String) session.getAttribute("firstName");
     String email = (String) session.getAttribute("email");
     int pId = (int) session.getAttribute("pId");
+    session.setAttribute("pId", pId);
+    int newChildId = (request.getParameter("newChildId") != null) ? Integer.parseInt(request.getParameter("newChildId")) : 0;
+    session.setAttribute("newChildId",newChildId );
 %>
 <!DOCTYPE html>
 <html>
@@ -21,16 +24,16 @@
 <div class="container-fluid">
         <header class="header flex justify-between items-center bg-blue-400 border-1 p-6">
             <div class="logo">
-                <img src="images/whiteLogo.png" alt="Logo">
+                <a href="dashboard.jsp"><img src="images/whiteLogo.png" alt="Logo"></a>
             </div>
             <div class="menu">
                 <img src="images/menu-white.svg" alt="Menu" onclick="toggleMenu()">
                 <div id="menuLinks" class="menu-links px-20 pt-20 bg-blue-400 right-0 w-auto flex flex-col gap-9 items-center justify-center text-3xl text-center">
-                    <a href="#">Dashboard</a>
-                    <a href="#">Child Profile</a>
-                    <a href="#">Vaccination Information</a>
-                    <a href="#">Child Profile</a>
-                    <a href="#">Appointment Management</a>
+                    <a href="dashboard.jsp">Dashboard</a>
+                    <a href="childProfile.jsp">Child Profile</a>
+                    <a href="VaxInfo.jsp">Vaccination Information</a>
+                    <a href="addAnotherChild.jsp">Add Child</a>
+                    <a href="appointmentPage.jsp">Appointment Management</a>
                 </div>
             </div>
         </header>
@@ -45,6 +48,64 @@
                 </div>
             </div>
         </section>
+         <section class="appointment-section">
+            <%
+try {
+    Connection_Db.Connect();
+    Connection conn = Connection_Db.conn;
+    int count = 0;
+    int childId = 0;
+    if (newChildId == 0) {
+        String selectChildIdQuery = "SELECT idE FROM `vax`.`Enfant` WHERE Parent_idP = ?";
+        PreparedStatement childIdStmt = conn.prepareStatement(selectChildIdQuery);
+        childIdStmt.setInt(1, pId);
+        ResultSet childIdRs = childIdStmt.executeQuery();
+
+        if (childIdRs.next()) {
+            childId = childIdRs.getInt("idE");
+        }
+        childIdRs.close();
+        childIdStmt.close();
+    } else {
+        childId = newChildId;
+    }
+
+    String selectAppointmentsQuery = "SELECT R.dateR, V.nomV AS vaccineName, C.nomC AS centerName FROM `vax`.`RendezVous` R INNER JOIN `vax`.`Vaccin` V ON R.Vaccin_idV = V.idV INNER JOIN `vax`.`CentreVax` C ON R.CentreVax_idC = C.idC WHERE R.Enfant_idE = ? AND R.statusR = 'scheduled'";
+    PreparedStatement pstmt = conn.prepareStatement(selectAppointmentsQuery);
+    pstmt.setInt(1, childId);
+    ResultSet rs = pstmt.executeQuery();
+    while (rs.next()) {
+        String appointmentDate = rs.getString("dateR");
+        String vaccineName = rs.getString("vaccineName");
+        String centerName = rs.getString("centerName");
+        count++;
+%>
+<div class="appointment-card mt-8 ml-8 bg-white border shadow-lg rounded-md">
+    <h2 class="text-2xl font-bold mb-4 my-8 lg:mx-10 ml-4">Appointment n° <%= count %></h2>
+    <div class="appointment lg:mx-10 ml-4 mb-4 grid gap-y-4">
+        <h1 class="text-xl text-gray-500"><%= vaccineName %></h1>
+        <p><span class="text-blue-400 font-semibold">Vaccination Center:</span> <%= centerName %></p>
+        <p><span class="text-blue-400 font-semibold">Date:</span> <%= appointmentDate %></p>
+    </div>
+</div>
+<%
+    }
+    rs.close();
+    pstmt.close();
+    conn.close();
+} catch (SQLException e) {
+    e.printStackTrace();
+    out.println("Error fetching appointments. Please try again.");
+}
+%>
+
+    </section>
+    <section class="download mt-8 ml-8 bg-white border shadow-lg rounded-md">
+                <h1 class="text-2xl font-bold mb-8 my-8 lg:mx-10 ml-4">Download Records</h1>
+                <form action="DownloadRecords" method="post">
+                <button type="submit" class="download-btn bg-blue-500 border text-white font-bold rounded-full ml-10 mb-4 p-4 hover:bg-opacity-30 hover:text-blue-500">Download</button>
+                </form>     
+    </section>
         </div>
         <div class="w-3/5">
         <section class="child-profile-section mt-8 mr-8 bg-white border shadow-lg rounded-md">
@@ -55,6 +116,7 @@
                 try {
                 Connection_Db.Connect();
                 Connection conn = Connection_Db.conn;
+                if (newChildId == 0){
                 String selectCentreIdQuery = "SELECT nomCompletE, dateNaiss, sexe, groupeSang, ville FROM `vax`.`Enfant` WHERE Parent_idP = ?";
                 PreparedStatement stmt = conn.prepareStatement(selectCentreIdQuery);
                 stmt.setInt(1, pId);
@@ -68,8 +130,25 @@
        <p class="text-gray-400"><span class="text-blue-40 mr-2 text-lg">Blood type :</span><%= rs.getString("groupeSang") %></p>
        <p class="text-gray-400"><span class="text-blue-40 mr-2 text-lg">City :</span><%= rs.getString("ville") %></p>
        <%
-                rs.close();
+           rs.close();
                 stmt.close();
+           } else {
+                String selectCentreIdQuery = "SELECT nomCompletE, dateNaiss, sexe, groupeSang, ville FROM `vax`.`Enfant` WHERE idE = ?";
+                PreparedStatement stmt = conn.prepareStatement(selectCentreIdQuery);
+                stmt.setInt(1, newChildId);
+                ResultSet rs = stmt.executeQuery();
+                
+                rs.next();
+                %>
+       <h1 class="text-blue-40 mb-6 text-2xl"><%= rs.getString("nomCompletE") %></h1>
+       <p class="text-gray-400"><span class="text-blue-40 mr-2 text-lg">Date of birth:</span><%= rs.getString("dateNaiss") %></p>
+       <p class="text-gray-400"><span class="text-blue-40 mr-2 text-lg">Gender:</span><%= rs.getString("sexe") %></p>
+       <p class="text-gray-400"><span class="text-blue-40 mr-2 text-lg">Blood type :</span><%= rs.getString("groupeSang") %></p>
+       <p class="text-gray-400"><span class="text-blue-40 mr-2 text-lg">City :</span><%= rs.getString("ville") %></p>
+        <%      rs.close();
+                stmt.close();
+            }
+                
                 conn.close();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -77,7 +156,7 @@
             }
         %>
         <div class="my-8">
-            <a href="signup.jsp" class="child-profile-btn bg-blue-500 border text-white font-bold rounded-full p-4 hover:bg-opacity-30 hover:text-blue-500">More Info</a>
+            <a href="childProfile.jsp" class="child-profile-btn bg-blue-500 border text-white font-bold rounded-full p-4 hover:bg-opacity-30 hover:text-blue-500">More Info</a>
         </div>
      </div>
      <div class="child-profile-img relative flex flex-1 flex-col gap-4">
@@ -88,69 +167,89 @@
 
         <section class="vaccination-section mt-10">
             <div class="bg-white relative flex flex-1 gap-2 mt-8 mr-8 border border-gray-40 shadow-lg rounded-md p-4 flex-col">
-                <h1 class="my-8 lg:mx-20 ml-8  font-bold text-3xl">Important Medical Information</h1>
-            <%try {
-     Connection_Db.Connect();
-     Connection conn = Connection_Db.conn;
-    String selectDateOfBirthQuery = "SELECT dateNaiss FROM `vax`.`Enfant` WHERE Parent_idP = ?";
-    PreparedStatement dateOfBirthStmt = conn.prepareStatement(selectDateOfBirthQuery);
-    dateOfBirthStmt.setInt(1, pId);
-    ResultSet dobRs = dateOfBirthStmt.executeQuery();
-    dobRs.next();
-    
-    LocalDate dob = dobRs.getDate("dateNaiss").toLocalDate();
-    dobRs.close();
-    dateOfBirthStmt.close();
+    <h1 class="my-8 lg:mx-20 ml-8  font-bold text-3xl">Vaccins needed for your child in order:</h1>
+<%
+try {
+    Connection_Db.Connect();
+    Connection conn = Connection_Db.conn;
+    int childId = 0;
+    LocalDate dob = null;
+    if (newChildId == 0) {
+        String selectChildIdQuery = "SELECT idE, dateNaiss FROM `vax`.`Enfant` WHERE Parent_idP = ?";
+        PreparedStatement childIdStmt = conn.prepareStatement(selectChildIdQuery);
+        childIdStmt.setInt(1, pId);
+        ResultSet childIdRs = childIdStmt.executeQuery();
 
-    
-    LocalDate currentDate = LocalDate.now();
-    Period period = Period.between(dob, currentDate);
-    int calculatedAge = period.getMonths();
-        String selectVaccineQuery = "SELECT * FROM `vax`.`Vaccin` WHERE ageRecommande <= ?";
+        if (childIdRs.next()) {
+            childId = childIdRs.getInt("idE");
+            dob = childIdRs.getDate("dateNaiss").toLocalDate();
+        }
+        childIdRs.close();
+        childIdStmt.close();
+    } else {
+        childId = newChildId;
+        String selectDateOfBirthQuery = "SELECT dateNaiss FROM `vax`.`Enfant` WHERE idE = ?";
+        PreparedStatement dateOfBirthStmt = conn.prepareStatement(selectDateOfBirthQuery);
+        dateOfBirthStmt.setInt(1, newChildId);
+        ResultSet dobRs = dateOfBirthStmt.executeQuery();
+        if (dobRs.next()) {
+            dob = dobRs.getDate("dateNaiss").toLocalDate();
+        }
+        dobRs.close();
+        dateOfBirthStmt.close();
+    }
+
+    if (dob != null) {
+        LocalDate currentDate = LocalDate.now();
+        Period period = Period.between(dob, currentDate);
+        int calculatedAge = period.getMonths();
+
+        String selectVaccineQuery = "SELECT * FROM `vax`.`Vaccin` WHERE ageRecommande <= ? OR ageRecommande <= ? + 1 " +
+                "AND idV NOT IN (SELECT Vaccin_idV FROM `vax`.`RendezVous` WHERE Enfant_idE = ? AND statusR = 'completed')";
         PreparedStatement pstmt = conn.prepareStatement(selectVaccineQuery);
         pstmt.setInt(1, calculatedAge);
+        pstmt.setInt(2, calculatedAge);
+        pstmt.setInt(3, childId);
         ResultSet rs = pstmt.executeQuery();
         while (rs.next()) {
-            %>
-            
-                
-                <h2 class="text-gray-400"><%= rs.getString("nomV") %></h2>
-                <div class="grid lg:grid-cols-3 grid-cols-1 text-center mb-3 gap-x-20 lg:px-32">
-                    <div class='grid gap-y-4 justify-items-center'>
-                        <img src="images/sideEffect.jpg" alt='Side Effect'/>
-                        <h3 class="text-blue-40">Side effects</h3>
-                        <p class="text-gray-600"><%= rs.getString("EffetSecondaire") %></p>
-                    </div>
-                    <div class='grid gap-y-4 justify-items-center'>
-                        <img src="images/recommend.jpg" alt='Recommendations'/>
-                        <h3 class="text-blue-40">Recommendations</h3>
-                        <p class="text-gray-600"><%= rs.getString("descr") %></p>
-                    </div>
-                    <div class='grid gap-y-4 justify-items-center'>
-                        <img src="images/PreDi.jpg" alt='Preventable Diseases'/>
-                        <h3 class="text-blue-40">Preventable diseases</h3>
-                        <p class="text-gray-600"><%= rs.getString("maladieEvitable") %></p>
-                    </div>
-                </div>
-           
+%>
+    <h2 class="text-gray-400"><%= rs.getString("nomV") %></h2>
+    <div class="grid lg:grid-cols-3 grid-cols-1 text-center mb-3 gap-x-20 lg:px-32">
+        <div class='grid gap-y-4 justify-items-center'>
+            <img src="images/sideEffect.jpg" alt='Side Effect'/>
+            <h3 class="text-blue-40">Side effects</h3>
+            <p class="text-gray-600"><%= rs.getString("EffetSecondaire") %></p>
+        </div>
+        <div class='grid gap-y-4 justify-items-center'>
+            <img src="images/recommend.jpg" alt='Recommendations'/>
+            <h3 class="text-blue-40">Recommendations</h3>
+            <p class="text-gray-600"><%= rs.getString("descr") %></p>
+        </div>
+        <div class='grid gap-y-4 justify-items-center'>
+            <img src="images/PreDi.jpg" alt='Preventable Diseases'/>
+            <h3 class="text-blue-40">Preventable diseases</h3>
+            <p class="text-gray-600"><%= rs.getString("maladieEvitable") %></p>
+        </div>
+    </div>
 <%
         }
-        
         rs.close();
         pstmt.close();
-        conn.close();
-    } catch (SQLException e) {
-        e.printStackTrace();
+    } else {
         out.println("No Vaccin for this age!");
-    }%>
-         </div>
+    }
+    conn.close();
+} catch (SQLException e) {
+    e.printStackTrace();
+    out.println("An error occurred while fetching vaccination information.");
+}
+%>
+</div>
+
         </section>
         </div>
     </div>
 </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         var firstName = "<%= firstName %>";

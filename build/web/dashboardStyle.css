@@ -45,10 +45,26 @@
         display: none;
     }
 }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th ,td {
+            border: 1px solid blue;
+            padding: 8px;
+            text-align: center;
+            color: #0056b3;
+        }
 
 .child-profile-img img{
     height: 280px;
     width: 300px;
 }
-
+.child-page-img img {
+    max-height: 300px;
+    max-width: 300px;
+}
+child-page-section{
+    width: 700px;
+}
 

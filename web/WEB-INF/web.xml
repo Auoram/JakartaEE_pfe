@@ -20,6 +20,14 @@
         <servlet-name>childProfile</servlet-name>
         <servlet-class>Children_Vax.childProfile</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DownloadRecords</servlet-name>
+        <servlet-class>Children_Vax.DownloadRecords</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addAnotherChild</servlet-name>
+        <servlet-class>Children_Vax.addAnotherChild</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Connection_Db</servlet-name>
         <url-pattern>/Connection_Db</url-pattern>
@@ -39,5 +47,13 @@
     <servlet-mapping>
         <servlet-name>childProfile</servlet-name>
         <url-pattern>/childProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DownloadRecords</servlet-name>
+        <url-pattern>/DownloadRecords</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addAnotherChild</servlet-name>
+        <url-pattern>/addAnotherChild</url-pattern>
     </servlet-mapping>
 </web-app>
