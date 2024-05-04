@@ -2,12 +2,6 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="Children_Vax.Connection_Db" %>
 <%@ page import="java.sql.ResultSet" %>
-<%
-    int pId = (int) session.getAttribute("pId");
-    session.setAttribute("pId", pId);
-    int newChildId = (request.getParameter("newChildId") != null) ? Integer.parseInt(request.getParameter("newChildId")) : 0;
-    session.setAttribute("newChildId",newChildId );
-    %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,12 +17,24 @@
             </div>
             <div class="menu">
                 <img src="images/menu-white.svg" alt="Menu" onclick="toggleMenu()">
-                <div id="menuLinks" class="menu-links px-20 pt-20 bg-blue-400 right-0 w-auto flex flex-col gap-9 items-center justify-center text-3xl text-center">
+                <div id="menuLinks" class="menu-links px-20 pt-8 bg-blue-400 right-0 w-auto flex flex-col gap-y-4 items-center justify-center text-3xl text-center" style = "margin-bottom: 35px;">
                     <a href="dashboard.jsp">Dashboard</a>
                     <a href="childProfile.jsp">Child Profile</a>
                     <a href="VaxInfo.jsp">Vaccination Information</a>
-                    <a href="addchild.jsp">Add Child</a>
+                    <a href="addAnotherChild.jsp">Add Child</a>
                     <a href="appointmentPage.jsp">Appointment Management</a>
+                    
+                    <a href="settings.jsp">
+                        <p class="text-lg">Settings</p>
+                    </a>
+
+                    <a href="chooseWho.jsp">
+                        <p class="text-lg">Check Another Kid</p>
+                    </a>
+
+                    <a href="index.html" class="border border-white p-4 mx-14 hover:bg-white">
+                        <p class="text-base">Log Out</p>
+                    </a>
                 </div>
             </div>
         </header>
@@ -46,21 +52,21 @@
             <div class="text-center">
                     <h1 class="text-3xl font-bold my-8 text-blue-400">Take an Appointment</h1>
                     <p class="text-lg mb-6 text-gray-500">Click the button Book Now and fill the form.</p>
-                    <button class="bg-blue-500 border text-white font-bold rounded-full p-4 hover:bg-opacity-30 hover:text-blue-500">Book Now</button>
+                    <a href="bookNow.jsp"><button class="bg-blue-500 border text-white font-bold rounded-full p-4 hover:bg-opacity-30 hover:text-blue-500">Book Now</button></a>
             </div>
             </section>
             <section class="cancel-appointment-section mt-8 pb-8 flex justify-center items-center mt-8">
             <div class="text-center">
                     <h1 class="text-3xl font-bold my-8 text-blue-400">Cancel an Appointment</h1>
                     <p class="text-lg mb-6 text-gray-500">Click the button Cancel It and fill the form.</p>
-                    <button class="bg-blue-500 border text-white font-bold rounded-full p-4 hover:bg-opacity-30 hover:text-blue-500">Cancel It</button>
+                    <a href="cancelit.jsp"><button class="bg-blue-500 border text-white font-bold rounded-full p-4 hover:bg-opacity-30 hover:text-blue-500">Cancel It</button></a>
             </div>
             </section>
             <section class="rescedule-appointment-section bg-white mt-8 py-14 flex justify-center items-center mt-8">
             <div class="text-center">
                     <h1 class="text-3xl font-bold my-8 text-blue-400">Reschedule an Appointment</h1>
                     <p class="text-lg mb-6 text-gray-500">Click the button Reschedule Now and fill the form.</p>
-                    <button class="bg-blue-500 border text-white font-bold rounded-full p-4 hover:bg-opacity-30 hover:text-blue-500">Reschedule Now</button>
+                    <a href="rescheduleAppointment.jsp"><button class="bg-blue-500 border text-white font-bold rounded-full p-4 hover:bg-opacity-30 hover:text-blue-500">Reschedule Now</button></a>
             </div>
             </section>
         </div>

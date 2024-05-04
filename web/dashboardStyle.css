@@ -22,8 +22,7 @@
         .menu-links a {
            display: block;
            color: white;
-           text-decoration: none;
-           margin-bottom: 50px;
+           text-decoration: none;;
         }
 
         .menu-links a:hover {
@@ -67,4 +66,3 @@
 child-page-section{
     width: 700px;
 }
-

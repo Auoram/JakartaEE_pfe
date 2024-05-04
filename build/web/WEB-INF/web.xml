@@ -28,6 +28,18 @@
         <servlet-name>addAnotherChild</servlet-name>
         <servlet-class>Children_Vax.addAnotherChild</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addAppointment</servlet-name>
+        <servlet-class>Children_Vax.addAppointment</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cancelAppointment</servlet-name>
+        <servlet-class>Children_Vax.cancelAppointment</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>rescheduleAppoint</servlet-name>
+        <servlet-class>Children_Vax.rescheduleAppoint</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Connection_Db</servlet-name>
         <url-pattern>/Connection_Db</url-pattern>
@@ -55,5 +67,17 @@
     <servlet-mapping>
         <servlet-name>addAnotherChild</servlet-name>
         <url-pattern>/addAnotherChild</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addAppointment</servlet-name>
+        <url-pattern>/addAppointment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cancelAppointment</servlet-name>
+        <url-pattern>/cancelAppointment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>rescheduleAppoint</servlet-name>
+        <url-pattern>/rescheduleAppoint</url-pattern>
     </servlet-mapping>
 </web-app>

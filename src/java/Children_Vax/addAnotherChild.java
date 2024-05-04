@@ -19,7 +19,8 @@ public class addAnotherChild extends HttpServlet {
         String gender = request.getParameter("gender");
         HttpSession session = request.getSession();
         Integer pIdObj = (Integer) session.getAttribute("pId");
-        int pId = (pIdObj != null) ? pIdObj.intValue() : 0;
+        int pId = (pIdObj != null) ? pIdObj.intValue() : 0; // Default value is 0 if pIdObj is null
+
         String centreVax = request.getParameter("Cvax");
         
         int cvId = 0;

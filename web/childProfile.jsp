@@ -7,6 +7,11 @@
     session.setAttribute("pId", pId);
     int newChildId = (request.getParameter("newChildId") != null) ? Integer.parseInt(request.getParameter("newChildId")) : 0;
     session.setAttribute("newChildId",newChildId );
+    if (newChildId != 0) {
+        out.println("New Child ID: " + newChildId);
+    } else {
+        out.println("New Child ID is 0 or null.");
+    }
     %>
 <!DOCTYPE html>
 <html>
@@ -23,12 +28,24 @@
             </div>
             <div class="menu">
                 <img src="images/menu-white.svg" alt="Menu" onclick="toggleMenu()">
-                <div id="menuLinks" class="menu-links px-20 pt-20 bg-blue-400 right-0 w-auto flex flex-col gap-9 items-center justify-center text-3xl text-center">
+                <div id="menuLinks" class="menu-links px-20 pt-8 bg-blue-400 right-0 w-auto flex flex-col gap-y-4 items-center justify-center text-3xl text-center" style = "margin-bottom: 35px;">
                     <a href="dashboard.jsp">Dashboard</a>
                     <a href="childProfile.jsp">Child Profile</a>
                     <a href="VaxInfo.jsp">Vaccination Information</a>
-                    <a href="addchild.jsp">Add Child</a>
+                    <a href="addAnotherChild.jsp">Add Child</a>
                     <a href="appointmentPage.jsp">Appointment Management</a>
+                    
+                    <a href="settings.jsp">
+                        <p class="text-lg">Settings</p>
+                    </a>
+
+                    <a href="chooseWho.jsp">
+                        <p class="text-lg">Check Another Kid</p>
+                    </a>
+
+                    <a href="index.html" class="border border-white p-4 mx-14 hover:bg-white">
+                        <p class="text-base">Log Out</p>
+                    </a>
                 </div>
             </div>
         </header>
