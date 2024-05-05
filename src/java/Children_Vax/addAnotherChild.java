@@ -19,12 +19,11 @@ public class addAnotherChild extends HttpServlet {
         String gender = request.getParameter("gender");
         HttpSession session = request.getSession();
         Integer pIdObj = (Integer) session.getAttribute("pId");
-        int pId = (pIdObj != null) ? pIdObj.intValue() : 0; // Default value is 0 if pIdObj is null
+        int pId = (pIdObj != null) ? pIdObj.intValue() : 0;
 
         String centreVax = request.getParameter("Cvax");
         
         int cvId = 0;
-        int newChildId = -1;
         
         try {
             Connection_Db.Connect();
@@ -63,17 +62,10 @@ public class addAnotherChild extends HttpServlet {
             
             childStatement.executeUpdate();
 
-            ResultSet generatedKeys = childStatement.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                newChildId = generatedKeys.getInt(1);
-            }
-
-            generatedKeys.close();
             childStatement.close();
             conn.close();
             
-            session.setAttribute("newChildId", newChildId);
-            response.sendRedirect("dashboard.jsp?newChildId=" + newChildId);
+            response.sendRedirect("dashboard.jsp");
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("msg", "Error adding child. Please try again.");

@@ -12,6 +12,8 @@ public class Login extends HttpServlet {
         String password = request.getParameter("password");
         
         boolean isAuthenticated = authenticate(email, password);
+        boolean isPersonelAuthenticated = authenticatePersonel(email, password);
+
 
         if (isAuthenticated) {
             HttpSession session = request.getSession();
@@ -21,7 +23,15 @@ public class Login extends HttpServlet {
             session.setAttribute("email", email);
             session.setAttribute("pId", pId);
             response.sendRedirect("dashboard.jsp");
-        } else {
+        }else if (isPersonelAuthenticated){
+            HttpSession session = request.getSession();
+            String firstName = getFirstNamePM(email);
+            int pId = getUserIdPM(email);
+            session.setAttribute("firstName", firstName);
+            session.setAttribute("email", email);
+            session.setAttribute("pId", pId);
+            response.sendRedirect("personnelDashboard.jsp");
+        }else {
             request.setAttribute("msg", "Error. Please try again.");
             RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
             dispatcher.forward(request, response);
@@ -31,7 +41,26 @@ public class Login extends HttpServlet {
         try{
         Connection_Db.Connect();
         Connection conn = Connection_Db.conn;
-        String sql = "SELECT * FROM `vax`.`User` WHERE email=? AND password=?";
+        String sql = "SELECT * FROM `vax`.`User` WHERE email=? AND password=? AND role = 'parent'";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, email);
+            pstmt.setString(2, password);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) return true;
+            rs.close();
+            pstmt.close();
+            conn.close();
+        }catch (Exception e) {
+        e.printStackTrace();	            
+        }
+        return false;
+    }
+    private boolean authenticatePersonel(String email, String password) {
+        try{
+        Connection_Db.Connect();
+        Connection conn = Connection_Db.conn;
+        String sql = "SELECT * FROM `vax`.`User` WHERE email=? AND password=? AND role = 'medical_personnel'";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, email);
             pstmt.setString(2, password);
@@ -68,6 +97,28 @@ public class Login extends HttpServlet {
         }
         return pId;
     }
+    private int getUserIdPM(String email) {
+        int pId = 1;
+        try {
+            Connection_Db.Connect();
+            Connection conn = Connection_Db.conn;
+            String sql = "SELECT idPM FROM `vax`.`PersonnelMedical;` WHERE user_idP =(Select id from `vax`.`User` where email=?)";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, email);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                pId = rs.getInt("idPM");
+            }
+
+            rs.close();
+            pstmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return pId;
+    }
     
     private String getFirstName(String email) {
         String firstName = "";
@@ -81,6 +132,28 @@ public class Login extends HttpServlet {
 
             if (rs.next()) {
                 firstName = rs.getString("nomP");
+            }
+
+            rs.close();
+            pstmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return firstName;
+    }
+    private String getFirstNamePM(String email) {
+        String firstName = "";
+        try {
+            Connection_Db.Connect();
+            Connection conn = Connection_Db.conn;
+            String sql = "SELECT nomPM FROM `vax`.`PersonnelMedical` WHERE user_idP =(Select id from `vax`.`User` where email=?)";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, email);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                firstName = rs.getString("nomPM");
             }
 
             rs.close();

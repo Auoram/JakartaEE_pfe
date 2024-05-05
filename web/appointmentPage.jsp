@@ -17,19 +17,15 @@
             </div>
             <div class="menu">
                 <img src="images/menu-white.svg" alt="Menu" onclick="toggleMenu()">
-                <div id="menuLinks" class="menu-links px-20 pt-8 bg-blue-400 right-0 w-auto flex flex-col gap-y-4 items-center justify-center text-3xl text-center" style = "margin-bottom: 35px;">
-                    <a href="dashboard.jsp">Dashboard</a>
-                    <a href="childProfile.jsp">Child Profile</a>
-                    <a href="VaxInfo.jsp">Vaccination Information</a>
-                    <a href="addAnotherChild.jsp">Add Child</a>
-                    <a href="appointmentPage.jsp">Appointment Management</a>
+                <div id="menuLinks" class="menu-links px-20 pt-14 bg-blue-400 right-0 w-auto flex flex-col gap-y-4 items-center justify-center text-3xl text-center" >
+                    <a href="dashboard.jsp" class="mb-7">Dashboard</a>
+                    <a href="childProfile.jsp" class="mb-7">Child Profile</a>
+                    <a href="VaxInfo.jsp" class="mb-7">Vaccination Information</a>
+                    <a href="addAnotherChild.jsp" class="mb-7">Add Child</a>
+                    <a href="appointmentPage.jsp" class="mb-7">Appointment Management</a>
                     
-                    <a href="settings.jsp">
+                    <a href="settings.jsp" class="mb-7">
                         <p class="text-lg">Settings</p>
-                    </a>
-
-                    <a href="chooseWho.jsp">
-                        <p class="text-lg">Check Another Kid</p>
                     </a>
 
                     <a href="index.html" class="border border-white p-4 mx-14 hover:bg-white">
