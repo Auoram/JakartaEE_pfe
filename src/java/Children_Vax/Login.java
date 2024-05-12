@@ -102,7 +102,7 @@ public class Login extends HttpServlet {
         try {
             Connection_Db.Connect();
             Connection conn = Connection_Db.conn;
-            String sql = "SELECT idPM FROM `vax`.`PersonnelMedical;` WHERE user_idP =(Select id from `vax`.`User` where email=?)";
+            String sql = "SELECT idPM FROM `vax`.`PersonnelMedical` WHERE user_idP =(Select id from `vax`.`User` where email=?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, email);
             ResultSet rs = pstmt.executeQuery();

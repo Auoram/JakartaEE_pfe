@@ -52,6 +52,14 @@
         <servlet-name>DeleteAccount</servlet-name>
         <servlet-class>Children_Vax.DeleteAccount</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateAppStatus</servlet-name>
+        <servlet-class>Children_Vax.UpdateAppStatus</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModifyChildInfo</servlet-name>
+        <servlet-class>Children_Vax.ModifyChildInfo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Connection_Db</servlet-name>
         <url-pattern>/Connection_Db</url-pattern>
@@ -103,5 +111,13 @@
     <servlet-mapping>
         <servlet-name>DeleteAccount</servlet-name>
         <url-pattern>/DeleteAccount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateAppStatus</servlet-name>
+        <url-pattern>/UpdateAppStatus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModifyChildInfo</servlet-name>
+        <url-pattern>/ModifyChildInfo</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -224,7 +224,7 @@ try {
         try {
             if (request.getMethod().equals("POST")) {
                 int selectedChildId = Integer.parseInt(request.getParameter("childId"));
-                Connection conn = Connection_Db.conn; // Reusing existing connection
+                Connection conn = Connection_Db.conn;
                 String selectChildNameQuery = "SELECT nomCompletE FROM `vax`.`Enfant` WHERE idE = ?";
                 PreparedStatement pstmtChildName = conn.prepareStatement(selectChildNameQuery);
                 pstmtChildName.setInt(1, selectedChildId);
