@@ -13,6 +13,7 @@ public class Login extends HttpServlet {
         
         boolean isAuthenticated = authenticate(email, password);
         boolean isPersonelAuthenticated = authenticatePersonel(email, password);
+        boolean isAdminAuthenticated = authenticateAdmin(email, password);
 
 
         if (isAuthenticated) {
@@ -31,6 +32,10 @@ public class Login extends HttpServlet {
             session.setAttribute("email", email);
             session.setAttribute("pId", pId);
             response.sendRedirect("personnelDashboard.jsp");
+        }else if (isAdminAuthenticated){
+            HttpSession session = request.getSession();
+            session.setAttribute("email", email);
+            response.sendRedirect("adminDashboard.jsp");
         }else {
             request.setAttribute("msg", "Error. Please try again.");
             RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
@@ -61,6 +66,25 @@ public class Login extends HttpServlet {
         Connection_Db.Connect();
         Connection conn = Connection_Db.conn;
         String sql = "SELECT * FROM `vax`.`User` WHERE email=? AND password=? AND role = 'medical_personnel'";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, email);
+            pstmt.setString(2, password);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) return true;
+            rs.close();
+            pstmt.close();
+            conn.close();
+        }catch (Exception e) {
+        e.printStackTrace();	            
+        }
+        return false;
+    }
+    private boolean authenticateAdmin(String email, String password) {
+        try{
+        Connection_Db.Connect();
+        Connection conn = Connection_Db.conn;
+        String sql = "SELECT * FROM `vax`.`User` WHERE email=? AND password=? AND role = 'admin'";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, email);
             pstmt.setString(2, password);
