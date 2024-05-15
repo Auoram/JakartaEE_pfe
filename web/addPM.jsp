@@ -95,9 +95,9 @@ p {
         <div class="logo">
             <a href="index.html"><img src="images/logo-img.png" alt="Logo"></a>
         </div>
-        <h2>Sign Up</h2>
+        <h2>Add Medical Staff</h2>
         </div>
-        <form action="addUser" method="POST"> 
+        <form action="addPm" method="POST"> 
             
         <div>
         <label for="email">Email:</label>
@@ -122,15 +122,25 @@ p {
             
         <label for="fname">Last name:</label>
         <input type="text" id="lname" name="lname" required><br><br>
+        </div> 
+            
+        <div>
+        <label for="email">Personnel Email:</label>
+        <input type="email" id="emailP" name="emailP" required><br><br>
         </div>
             
         <div>
         <label for="tel">Phone number:</label>
         <input type="tel" pattern="^0[0-9]{9}" id="tel" name="tel" required><br><br>
         </div>
-        
+            
         <div>
-        <label for="gender">Gender</label>
+        <label for="job">Job:</label>
+        <input type="text" id="job" name="job" required><br><br>
+        </div>
+            
+        <div>
+        <label for="gender">Gender:</label>
           <div>
              <input type="radio" id="gender" name="gender" value="F"/>
                <label for="Woman">Woman<br/></label>
@@ -138,17 +148,10 @@ p {
                <label for="Man">Man<br/></label>
           </div>
         </div>
-            
+           
         <div>
-        <label htmlFor="rs">Relationship to child</label>
-          <div>
-             <input type="radio" id="rs" name="rs" value="Mother"/>
-               <label htmlFor="Mother">Mother<br/></label>
-             <input type="radio" id="rs" name="rs" value="Father"/>
-               <label htmlFor="Father">Father<br/></label>
-              <input type="radio" id="rs" name="rs" value="Guardian"/>
-               <label htmlFor="Guardian">Guardian<br/></label>
-          </div>
+        <label for="vc">Vaccination Center:</label>
+        <input type="text" id="vc" name="vc" required><br><br>
         </div>
             
         <div>
@@ -156,7 +159,7 @@ p {
               <p><%= request.getAttribute("msg") %></p>
              <% } %>
         </div>
-            <input type="submit" value="Add User">
+            <input type="submit" value="Add medical staff">
         </form>
     </body>
 </html>

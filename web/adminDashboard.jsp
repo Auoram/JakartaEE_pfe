@@ -17,14 +17,6 @@
             background-color: #f3f4f6;
         }
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding-top: 20px;
-        }
-        
         .container-head {
            display: flex;
            justify-content: space-between;
@@ -37,13 +29,9 @@
         }
         
         .dashboard-container {
-            max-width: 800px;
-            width: 100%;
-            background-color: white;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            margin-top: 20px;
         }
         
         .section-title {
@@ -52,21 +40,74 @@
             margin-bottom: 20px;
             color: #333;
         }
+
+        .card {
+            background-color: #f9fafc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 45px;
+        }
+
+        .card-content {
+            color: #777;
+            font-size: 16px;
+        }
         </style>
     </head>
     <body>
+        <div class="container-fluid">
         <div class="container-head bg-blue-400 py-4">
         <div class="logo">
-            <a href="personnelDashboard.jsp"><img src="images/whiteLogo.png" alt="Logo"></a>
+            <a href="adminDashboard.jsp"><img src="images/whiteLogo.png" alt="Logo"></a>
         </div>
         <div class="ml-auto">
         <a href="index.html" class="text-white font-bold border-2 border-white p-4 hover:bg-blue-100 hover:text-blue-400">Logout</a>
     </div>
     </div>
-        <div class="container">
-            <div class="dashboard-container">
-                <div class="section-title">Dashboard</div>
+           <div class="flex justify-between">
+        <div class="w-1/3 ">
+                <div class="mx-4 mt-6 bg-white mb-8 border border-gray-100 shadow-lg rounded-lg">
+          <h1 class="text-gray-500 text-3xl mt-5 ml-4 lg:ml-10">Password</h1>
+          <div class="border border-gray-300 mt-5"></div>
+          <div class="gap-14 lg:gap-20 py-4 pr-6 lg:flex items-center grid ">
+            <p class="relative flex flex-1 text-gray-500 regular-16 ml-4 lg:ml-10 my-10">Do you want to change your password ?</p>
+            <div class="relative flex flex-1">
+            <a href="newPassword.jsp" class="button border py-4 px-8 border-blue-400 text-center font-bold text-blue-400 hover:bg-blue-100">Change Password</a>
             </div>
+          </div>
+        </div>
+        </div>
+        <div class="dashboard-container w-3/5 bg-white mt-6 mr-8">
+            <div class="section-title">Dashboard</div>
+                
+                <div class="card">
+                   <div class="card-title">Add Medical Staff</div>
+                   <a href="addPM.jsp" class="submit-btn bg-blue-400 border text-white font-bold rounded-lg pointer px-10 py-3 hover:bg-opacity-30 hover:text-blue-400">add info</a>
+                </div>
+                
+                <div class="card">
+                   <div class="card-title">Delete Medical Staff</div>
+                   <a href="addPM.jsp" class="submit-btn bg-blue-400 border text-white font-bold rounded-lg pointer px-10 py-3 hover:bg-opacity-30 hover:text-blue-400">Delete</a>
+                </div>
+            
+                <div class="card">
+                    <div class="card-title">Add Vaccination center</div>
+                   <a href="addPM.jsp" class="submit-btn bg-blue-400 border text-white font-bold rounded-lg pointer px-10 py-3 hover:bg-opacity-30 hover:text-blue-400">add info</a>
+                </div>
+            
+                <div class="card">
+                   <div class="card-title">Modify Vaccination center Info</div>
+                   <a href="addPM.jsp" class="submit-btn bg-blue-400 border text-white font-bold rounded-lg pointer px-10 py-3 hover:bg-opacity-30 hover:text-blue-400">Modify</a>
+                </div>
+        </div>
+           </div>
         </div>
     </body>
 </html>

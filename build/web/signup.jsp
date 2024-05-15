@@ -126,7 +126,7 @@ p {
             
         <div>
         <label for="tel">Phone number:</label>
-        <input type="tel" pattern="[0-9]{10}" id="tel" name="tel" required><br><br>
+        <input type="tel" pattern="^0[0-9]{9}" id="tel" name="tel" required><br><br>
         </div>
         
         <div>

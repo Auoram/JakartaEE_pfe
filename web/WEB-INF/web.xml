@@ -60,6 +60,10 @@
         <servlet-name>ModifyChildInfo</servlet-name>
         <servlet-class>Children_Vax.ModifyChildInfo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addPm</servlet-name>
+        <servlet-class>Children_Vax.addPm</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Connection_Db</servlet-name>
         <url-pattern>/Connection_Db</url-pattern>
@@ -119,5 +123,9 @@
     <servlet-mapping>
         <servlet-name>ModifyChildInfo</servlet-name>
         <url-pattern>/ModifyChildInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addPm</servlet-name>
+        <url-pattern>/addPm</url-pattern>
     </servlet-mapping>
 </web-app>
