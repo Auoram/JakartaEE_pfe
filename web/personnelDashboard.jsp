@@ -38,13 +38,9 @@
         }
 
         .dashboard-container {
-            max-width: 800px;
-            width: 100%;
-            background-color: white;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            margin-top: 20px;
         }
 
         .section-title {
@@ -100,6 +96,7 @@
     </style>
 </head>
 <body>
+    <div class="container-fluid">
     <div class="container-head bg-blue-400 py-4">
         <div class="logo">
             <a href="personnelDashboard.jsp"><img src="images/whiteLogo.png" alt="Logo"></a>
@@ -108,8 +105,30 @@
         <a href="index.html" class="text-white font-bold border-2 border-white p-4 hover:bg-blue-100 hover:text-blue-400">Logout</a>
     </div>
     </div>
-<div class="container">
-    <div class="dashboard-container">
+           <div class="flex justify-between">
+        <div class="w-1/3 ">
+                <div class="mx-4 mt-6 bg-white mb-8 border border-gray-100 shadow-lg rounded-lg">
+          <h1 class="text-gray-500 text-3xl mt-5 ml-4 lg:ml-10">Password</h1>
+          <div class="border border-gray-300 mt-5"></div>
+          <div class="gap-8 lg:gap-20 py-4 pr-6 lg:flex items-center grid ">
+            <p class="relative flex flex-1 text-gray-500 regular-16 ml-4 lg:ml-10 my-10">Do you want to change your password ?</p>
+            <div class="relative flex flex-1 sm:ml-2">
+            <a href="newPassword.jsp" class="border py-4 px-8 border-blue-400 text-center font-bold text-blue-400 hover:bg-blue-100">Change Password</a>
+            </div>
+          </div>
+        </div>
+                 <div class="mx-4 mt-6 bg-white mb-8 border border-gray-100 shadow-lg rounded-lg">
+          <h1 class="text-gray-500 text-3xl mt-5 ml-4 lg:ml-10">Modify AccountInfo</h1>
+          <div class="border border-gray-300 mt-5"></div>
+          <div class="gap-8 lg:gap-20 py-4 pr-6 lg:flex items-center grid ">
+              <p class="relative flex flex-1 text-gray-500 regular-16 ml-4 lg:ml-10 my-10">Do you want to change some account information ?</p>
+            <div class="relative flex flex-1 sm:ml-2">
+            <a href="modifyPm.jsp" class="border py-4 px-8 border-blue-400 text-center font-bold text-blue-400 hover:bg-blue-100">Modify</a>
+            </div>
+          </div>
+        </div>
+        </div>
+    <div class="dashboard-container w-4/5 bg-white mt-6 mr-8">
         <div class="section-title">Dashboard</div>
 
         <div class="card">
@@ -310,6 +329,7 @@
         </div>
     </div>
     </div>
+</div>
 </div>
 </body>
 </html>

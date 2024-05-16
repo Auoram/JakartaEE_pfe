@@ -59,6 +59,15 @@
             color: #777;
             font-size: 16px;
         }
+        
+        input[type="email"]{
+            display: block;
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
         </style>
     </head>
     <body>
@@ -94,20 +103,39 @@
                 
                 <div class="card">
                    <div class="card-title">Delete Medical Staff</div>
-                   <a href="addPM.jsp" class="submit-btn bg-blue-400 border text-white font-bold rounded-lg pointer px-10 py-3 hover:bg-opacity-30 hover:text-blue-400">Delete</a>
+                   <a href="#" onclick="showDeleteForm()" class="submit-btn bg-blue-400 border text-white font-bold rounded-lg pointer px-10 py-3 hover:bg-opacity-30 hover:text-blue-400">Choose Medical Staff</a>
+                   <div id="deleteForm" class="mt-8" style="display: none;">
+                       <form action="DeletePM" method="POST"> 
+                            <input type="email" name="emailToDelete" id="emailToDelete" placeholder="Enter Professional Email">
+                            <% if (request.getAttribute("msg") != null) { %>
+                            <p class="text-red-400 mt-4 mb-4"><%= request.getAttribute("msg") %></p>
+                            <% } %>
+                            <input type="submit" value="Delete" class="submit-btn bg-red-400 border text-white font-bold rounded-lg pointer px-10 py-3 hover:bg-opacity-30 hover:text-red-400">
+                       </form>
+                    </div>
                 </div>
             
                 <div class="card">
                     <div class="card-title">Add Vaccination center</div>
-                   <a href="addPM.jsp" class="submit-btn bg-blue-400 border text-white font-bold rounded-lg pointer px-10 py-3 hover:bg-opacity-30 hover:text-blue-400">add info</a>
+                   <a href="addCentreVax.jsp" class="submit-btn bg-blue-400 border text-white font-bold rounded-lg pointer px-10 py-3 hover:bg-opacity-30 hover:text-blue-400">add info</a>
                 </div>
             
                 <div class="card">
                    <div class="card-title">Modify Vaccination center Info</div>
-                   <a href="addPM.jsp" class="submit-btn bg-blue-400 border text-white font-bold rounded-lg pointer px-10 py-3 hover:bg-opacity-30 hover:text-blue-400">Modify</a>
+                   <a href="modifyVaxC.jsp" class="submit-btn bg-blue-400 border text-white font-bold rounded-lg pointer px-10 py-3 hover:bg-opacity-30 hover:text-blue-400">Modify</a>
                 </div>
         </div>
            </div>
         </div>
+        <script>
+    function showDeleteForm() {
+        var deleteForm = document.getElementById("deleteForm");
+        if (deleteForm.style.display === "none") {
+            deleteForm.style.display = "block";
+        } else {
+            deleteForm.style.display = "none";
+        }
+    }
+</script>
     </body>
 </html>

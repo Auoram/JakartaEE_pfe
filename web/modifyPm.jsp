@@ -4,6 +4,10 @@
 <%@ page import="Children_Vax.Connection_Db" %>
 <%@ page import="java.sql.ResultSet" %>
 <%
+    String firstName = (String) session.getAttribute("firstName");
+    String email = (String) session.getAttribute("email");
+%>
+<%
     List<String> vaccineCNames = new ArrayList<>();
     try {
         Connection_Db.Connect();
@@ -60,7 +64,6 @@
             color: #333;
         }
         input[type="email"],
-input[type="password"],
 input[type="text"],
 input[type="tel"],
 select[id="vc"]{
@@ -116,35 +119,10 @@ p {
         <div class="logo">
             <a href="index.html"><img src="images/logo-img.png" alt="Logo"></a>
         </div>
-        <h2>Add Medical Staff</h2>
+        <h2>Modify Account Info</h2>
         </div>
-        <form action="addPm" method="POST"> 
-            
-        <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        </div>
-            
-        <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        </div>
-            
-        <div>
-        <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" required><br><br>
-        </div>
-            
-        <div>   
-        <label for="fname">First name:</label>
-        <input type="text" id="fname" name="fname" required><br><br>
-        </div>
-        <div>
-            
-        <label for="fname">Last name:</label>
-        <input type="text" id="lname" name="lname" required><br><br>
-        </div> 
-            
+        <form action="modifyPM" method="POST"> 
+             
         <div>
         <label for="email">Personnel Email:</label>
         <input type="email" id="emailP" name="emailP" required><br><br>
@@ -158,16 +136,6 @@ p {
         <div>
         <label for="job">Job:</label>
         <input type="text" id="job" name="job" required><br><br>
-        </div>
-            
-        <div>
-        <label for="gender">Gender:</label>
-          <div>
-             <input type="radio" id="gender" name="gender" value="F"/>
-               <label for="Woman">Woman<br/></label>
-             <input type="radio" id="gender" name="gender" value="M"/>
-               <label for="Man">Man<br/></label>
-          </div>
         </div>
            
         <div>
@@ -185,7 +153,7 @@ p {
               <p><%= request.getAttribute("msg") %></p>
              <% } %>
         </div>
-            <input type="submit" value="Add medical staff">
+            <input type="submit" value="Submit Modification">
         </form>
     </body>
 </html>

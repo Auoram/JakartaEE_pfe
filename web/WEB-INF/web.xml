@@ -64,6 +64,22 @@
         <servlet-name>addPm</servlet-name>
         <servlet-class>Children_Vax.addPm</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeletePM</servlet-name>
+        <servlet-class>Children_Vax.DeletePM</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addVaxCenter</servlet-name>
+        <servlet-class>Children_Vax.addVaxCenter</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>modifyCVax</servlet-name>
+        <servlet-class>Children_Vax.modifyCVax</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>modifyPM</servlet-name>
+        <servlet-class>Children_Vax.modifyPM</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Connection_Db</servlet-name>
         <url-pattern>/Connection_Db</url-pattern>
@@ -127,5 +143,21 @@
     <servlet-mapping>
         <servlet-name>addPm</servlet-name>
         <url-pattern>/addPm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletePM</servlet-name>
+        <url-pattern>/DeletePM</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addVaxCenter</servlet-name>
+        <url-pattern>/addVaxCenter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>modifyCVax</servlet-name>
+        <url-pattern>/modifyCVax</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>modifyPM</servlet-name>
+        <url-pattern>/modifyPM</url-pattern>
     </servlet-mapping>
 </web-app>

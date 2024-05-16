@@ -59,11 +59,9 @@
             text-align: center;
             color: #333;
         }
-        input[type="email"],
-input[type="password"],
 input[type="text"],
 input[type="tel"],
-select[id="vc"]{
+select[id="centerName"]{
     display: block;
     width: calc(100% - 20px);
     padding: 10px;
@@ -73,7 +71,7 @@ select[id="vc"]{
 }
 
 input[type="submit"] {
-    width: 25%;
+    width: 30%;
     padding: 10px;
     background-color: #007bff;
     color: #fff;
@@ -81,7 +79,7 @@ input[type="submit"] {
     border-radius: 3px;
     cursor: pointer;
     margin-top: 20px;
-    margin-left: 37.5%;
+    margin-left: 36.5%;
 }
 
 input[type="submit"]:hover {
@@ -116,63 +114,13 @@ p {
         <div class="logo">
             <a href="index.html"><img src="images/logo-img.png" alt="Logo"></a>
         </div>
-        <h2>Add Medical Staff</h2>
+        <h2>Modify Vaccination Center Information</h2>
         </div>
-        <form action="addPm" method="POST"> 
+        <form action="modifyCVax" method="POST"> 
             
         <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        </div>
-            
-        <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        </div>
-            
-        <div>
-        <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" required><br><br>
-        </div>
-            
-        <div>   
-        <label for="fname">First name:</label>
-        <input type="text" id="fname" name="fname" required><br><br>
-        </div>
-        <div>
-            
-        <label for="fname">Last name:</label>
-        <input type="text" id="lname" name="lname" required><br><br>
-        </div> 
-            
-        <div>
-        <label for="email">Personnel Email:</label>
-        <input type="email" id="emailP" name="emailP" required><br><br>
-        </div>
-            
-        <div>
-        <label for="tel">Phone number:</label>
-        <input type="tel" pattern="^0[0-9]{9}" id="tel" name="tel" required><br><br>
-        </div>
-            
-        <div>
-        <label for="job">Job:</label>
-        <input type="text" id="job" name="job" required><br><br>
-        </div>
-            
-        <div>
-        <label for="gender">Gender:</label>
-          <div>
-             <input type="radio" id="gender" name="gender" value="F"/>
-               <label for="Woman">Woman<br/></label>
-             <input type="radio" id="gender" name="gender" value="M"/>
-               <label for="Man">Man<br/></label>
-          </div>
-        </div>
-           
-        <div>
-        <label for="vc">Vaccination Center:</label>
-        <select id="vc" name="vc" required>
+        <label for="centerName">Vaccination Center to modify:</label>
+        <select id="centerName" name="centerName" required>
           <option value="">Select Vaccine</option>
          <% for (String vaccineCName : vaccineCNames) { %>
         <option value="<%= vaccineCName %>"><%= vaccineCName %></option>
@@ -181,11 +129,21 @@ p {
         </div>
             
         <div>
+        <label for="address">Address:</label><br>
+        <input type="text" id="address" name="address" required><br><br>
+        </div>
+            
+        <div>
+        <label for="tel">Phone number:</label>
+        <input type="tel" pattern="^0[0-9]{9}" id="tel" name="tel" required><br><br>
+        </div>
+
+        <div>
             <% if (request.getAttribute("msg") != null) { %>
               <p><%= request.getAttribute("msg") %></p>
              <% } %>
         </div>
-            <input type="submit" value="Add medical staff">
+            <input type="submit" value="Submit Modification">
         </form>
     </body>
 </html>
