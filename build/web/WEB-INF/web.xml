@@ -80,6 +80,14 @@
         <servlet-name>modifyPM</servlet-name>
         <servlet-class>Children_Vax.modifyPM</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ForgetPassword</servlet-name>
+        <servlet-class>Children_Vax.ForgetPassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangePassword</servlet-name>
+        <servlet-class>Children_Vax.ChangePassword</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Connection_Db</servlet-name>
         <url-pattern>/Connection_Db</url-pattern>
@@ -159,5 +167,13 @@
     <servlet-mapping>
         <servlet-name>modifyPM</servlet-name>
         <url-pattern>/modifyPM</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgetPassword</servlet-name>
+        <url-pattern>/ForgetPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePassword</servlet-name>
+        <url-pattern>/ChangePassword</url-pattern>
     </servlet-mapping>
 </web-app>

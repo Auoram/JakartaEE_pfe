@@ -2,7 +2,10 @@
 <%@ page import="java.sql.*, java.util.*" %>
 <%@ page import="Children_Vax.Connection_Db" %>
 <%@ page import="java.sql.ResultSet" %>
-<%
+<% 
+    String email = (String) session.getAttribute("email");
+    System.out.println("Email from session: " + email);
+
     List<String> vaccineNames = new ArrayList<>();
     try {
         Connection_Db.Connect();

@@ -66,3 +66,16 @@
 child-page-section{
     width: 700px;
 }
+#notification {
+            visibility: hidden;
+            position: absolute;
+            top: 15%;
+            left:50%;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #89CFF0;
+            transform: translate(-50%,-50%);
+            color: white;
+            text-align: center;
+            z-index: 2000;
+        }

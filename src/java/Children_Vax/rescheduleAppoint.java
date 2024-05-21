@@ -58,8 +58,11 @@ public class rescheduleAppoint extends HttpServlet {
         pstmt.executeUpdate();
         pstmt.close();
         conn.close();
-
-        response.sendRedirect("appointmentPage.jsp");
+        
+        HttpSession session = request.getSession();
+            session.setAttribute("confirmationMessage", "Appointment rescheduled successfully for " + childName + " on " + newdate + " at " + newtime + " at " + centreName + " for vaccine " + vaccineName);
+            
+        response.sendRedirect("dashboard.jsp");
     } catch (SQLException e) {
         e.printStackTrace();
         request.setAttribute("msg", "Error rescheduling appointment. Please try again.");

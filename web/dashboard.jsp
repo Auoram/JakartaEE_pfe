@@ -47,7 +47,8 @@
                 </div>
             </div>
         </header>
-    <div class="flex justify-between">
+    <div class="content flex justify-between">
+        <div id="notification" class="lg:w-2/3 w-2/3 rounded-xl px-6 py-6 bg-opacity-40"></div>
         <div class="w-1/3">
     <section class="profile-section mt-8 ml-8 bg-white border shadow-lg rounded-md">
             <div class="profile-info grid grid-col items-center justify-center gap-6 text-center pb-4">
@@ -109,8 +110,32 @@ try {
 </section>
     <section class="download mt-8 ml-8 bg-white border shadow-lg rounded-md">
                 <h1 class="text-2xl font-bold mb-8 my-8 lg:mx-10 ml-4">Download Records</h1>
-                <form action="DownloadRecords" method="post">
-                <button type="submit" class="download-btn bg-blue-500 border text-white font-bold rounded-full ml-10 mb-4 p-4 hover:bg-opacity-30 hover:text-blue-500">Download</button>
+                <form action="DownloadRecords" method="post" class="mb-6 ml-4 lg:mx-10">
+                    <label for="childId" class="select-label text-xl mr-4">Select Child:</label>
+                    <select name="childId" id="childId" class="select-dropdown border border-blue-400 mr-4 rounded-md px-4 py-2" required>
+                        <% 
+                            try {
+                                Connection_Db.Connect();
+                                Connection conn = Connection_Db.conn;
+                                String query = "SELECT idE, nomCompletE FROM `vax`.`Enfant` WHERE Parent_idP = ?";
+                                PreparedStatement pstmt = conn.prepareStatement(query);
+                                pstmt.setInt(1, pId);
+                                ResultSet rs = pstmt.executeQuery();
+                                
+                                while (rs.next()) {
+                                    int id = rs.getInt("idE");
+                                    String name = rs.getString("nomCompletE");
+                                    out.print("<option value='" + id + "'>" + name + "</option>");
+                                }
+                                rs.close();
+                                pstmt.close();
+                                conn.close();
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+                        %>
+                    </select>
+                <button type="submit" class="download-btn bg-blue-500 border text-white font-bold rounded-full ml-2 mt-6 mb-4 p-4 hover:bg-opacity-30 hover:text-blue-500">Download</button>
                 </form>     
     </section>
         </div>
@@ -302,6 +327,20 @@ try {
         </div>
     </div>
 </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            <% String confirmationMessage = (String) session.getAttribute("confirmationMessage");
+               if (confirmationMessage != null) { %>
+                var notification = document.getElementById("notification");
+                notification.innerText = "<%= confirmationMessage %>";
+                notification.style.visibility = "visible";
+                setTimeout(function() {
+                    notification.style.visibility = "hidden";
+                }, 20000);
+                <% session.removeAttribute("confirmationMessage"); %>
+            <% } %>
+        });
+    </script>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         var firstName = "<%= firstName %>";

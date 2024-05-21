@@ -28,9 +28,10 @@
             height: 55px;
         }
         form{
-            width: 250px;
+            width: 300px;
+            height: 250px;
             margin: 50px auto;
-            padding: 20px;
+            padding: 25px;
             background-color: #fff;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -53,11 +54,23 @@
             background-color: #007bff;
             color: #fff;
             border: none;
+            margin-top: 20px;
+            margin-bottom: 20px;
             border-radius: 3px;
             cursor: pointer;
         }
         input[type="submit"]:hover {
             background-color: #0056b3;
+        }
+        .forgot-password{
+            margin-top: 10px;
+        }
+        .forgot-password a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .forgot-password a:hover {
+            text-decoration: underline;
         }
         p {
             color: red;
@@ -80,6 +93,9 @@
               <p><%= request.getAttribute("msg") %></p>
         <% } %>
         <input type="submit" value="Login">
+        <div class="forgot-password">
+            <a href="forgetPassword.jsp">Forgot Password?</a>
+        </div>
     </form>
     </body>
 </html>

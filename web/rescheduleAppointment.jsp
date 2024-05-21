@@ -3,6 +3,8 @@
 <%@ page import="Children_Vax.Connection_Db" %>
 <%@ page import="java.sql.ResultSet" %>
 <%
+    String email = (String) session.getAttribute("email");
+    int pId = (int) session.getAttribute("pId");
     List<String> vaccineNames = new ArrayList<>();
     try {
         Connection_Db.Connect();

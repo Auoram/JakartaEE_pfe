@@ -2,6 +2,9 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="Children_Vax.Connection_Db" %>
 <%@ page import="java.sql.ResultSet" %>
+<% String email = (String) session.getAttribute("email");
+int pId = (int) session.getAttribute("pId");
+%>
 <!DOCTYPE html>
 <html>
     <head>
