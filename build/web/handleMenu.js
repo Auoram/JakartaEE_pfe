@@ -2,12 +2,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const menuIcon = document.getElementById("menu-icon");
     const mobileMenu = document.getElementById("mobile-menu");
 
-    function toggleMenu() {
-        mobileMenu.classList.toggle("active");
-    }
-
     menuIcon.addEventListener("click", function() {
-        toggleMenu();
+        mobileMenu.classList.toggle("active");
     });
 
     document.addEventListener("click", function(event) {
@@ -16,5 +12,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
 
 
