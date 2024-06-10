@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function() {
     const menuIcon = document.getElementById("menu-icon");
     const mobileMenu = document.getElementById("mobile-menu");
 
@@ -12,6 +12,3 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
-
-
-
