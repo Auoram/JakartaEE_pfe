@@ -18,9 +18,9 @@
         </div>
         <nav class="hidden md:flex space-x-6">
             <ul class="flex space-x-10">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.jsp">Home</a></li>
                 <li><a href="about.jsp">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="contact.jsp">Contact</a></li>
             </ul>
         </nav>
         <div class="hidden md:flex space-x-4">
@@ -34,9 +34,9 @@
 
     <div id="mobile-menu" class="mobile-menu hidden bg-blue-600 text-white p-4">
         <ul class="space-y-4">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="index.jsp">Home</a></li>
+            <li><a href="about.jsp">About</a></li>
+            <li><a href="contact.jsp">Contact</a></li>
         </ul>
         <div class="buttons mt-4 space-y-4">
             <a href="signup.jsp" class="block bg-blue-700 px-4 py-2 rounded text-center hover:bg-blue-500">Sign Up</a>
@@ -50,7 +50,7 @@
             <div class="container mx-auto relative z-10 flex flex-col items-center text-center text-white px-4">
                 <h1 class="text-4xl lg:text-6xl font-bold mb-4">Build Your Child's Immunity System</h1>
                 <p class="text-xl mb-8">Your trusted vaccination companion, KidVax is here to help you manage your child's vaccination effortlessly.</p>
-                <a href="test.html" class="bg-blue-700 px-4 py-2 rounded hover:bg-blue-500">How it works &gt;</a>
+                <a href="howItWork.jsp" class="bg-blue-700 px-4 py-2 rounded hover:bg-blue-500">How it works &gt;</a>
             </div>
         </section>
 
@@ -74,7 +74,7 @@
                 </div>
             </div>
         </div>
-        <div class="vaxSchedule-section bg-blue-50 text-center mx-auto my-auto px-4 sm:py-12 lg:px-8 pb-32 lg:py-16 rounded-lg shadow-md">
+        <div class="vaxSchedule-section bg-blue-200 bg-opacity-20 text-center mx-auto my-auto px-4 sm:py-12 lg:px-8 pb-32 lg:py-16 rounded-lg shadow-md">
             <h1 class="text-3xl lg:text-4xl font-bold text-blue-600 mb-8">Vaccination Schedule</h1>
             <div class="table-container">
             <table class="schedule-table mx-auto">
@@ -157,10 +157,10 @@
             </div>
             <div class="px-5">
                 <ul class="text-lg font-bold space-y-4">
-                    <li><a href="#" class="hover:underline">Home</a></li>
+                    <li><a href="index.jsp" class="hover:underline">Home</a></li>
                     <li><a href="about.jsp" class="hover:underline">About</a></li>
-                    <li><a href="#" class="hover:underline">Contact</a></li>
-                    <li><a href="#" class="hover:underline">How it works</a></li>
+                    <li><a href="contact.jsp" class="hover:underline">Contact</a></li>
+                    <li><a href="howItWork.jsp" class="hover:underline">How it works</a></li>
                 </ul>
             </div>
             <div class="px-5">

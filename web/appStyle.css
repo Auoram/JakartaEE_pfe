@@ -120,4 +120,13 @@ nav ul li a:hover{
         .dose-cell {
             background-color: #e0f7fa;
         }
-       
+
+        .hidden-section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .show-section {
+            opacity: 1;
+            transform: translateY(0);
+        }
