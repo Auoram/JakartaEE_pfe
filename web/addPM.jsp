@@ -25,167 +25,93 @@
 %>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-         <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-top: 50px;
-        }
-        .logo {
-            align-items: center;
-            margin-bottom: 25px;
-        }
-       .logo img {
-            height: 55px;
-        }
-        form{
-            width: 250px;
-            margin: 35px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-        input[type="email"],
-input[type="password"],
-input[type="text"],
-input[type="tel"],
-select[id="vc"]{
-    display: block;
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-
-input[type="submit"] {
-    width: 25%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    margin-top: 20px;
-    margin-left: 37.5%;
-}
-
-input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-p {
-    color: red;
-}
-
-@media only screen and (min-width: 768px) {
-    form {
-        width: 600px;
-        margin: 35px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-
-    form > div {
-        width: calc(50% - 10px);
-    }
-}
-        </style>
-    </head>
-    <body>
-        <div class="container">
-        <div class="logo">
-            <a href="index.html"><img src="images/logo-img.png" alt="Logo"></a>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Add Medical Staff</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-blue-100 bg-opacity-20">
+    <div class="flex flex-col justify-center items-center mt-16 py-4">
+        <div class="mb-14">
+                <img src="images/logo-img.png" alt="Logo" class="h-14">
         </div>
-        <h2>Add Medical Staff</h2>
-        </div>
-        <form action="addPm" method="POST"> 
-            
-        <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        </div>
-            
-        <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        </div>
-            
-        <div>
-        <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" required><br><br>
-        </div>
-            
-        <div>   
-        <label for="fname">First name:</label>
-        <input type="text" id="fname" name="fname" required><br><br>
-        </div>
-        <div>
-            
-        <label for="fname">Last name:</label>
-        <input type="text" id="lname" name="lname" required><br><br>
-        </div> 
-            
-        <div>
-        <label for="email">Personnel Email:</label>
-        <input type="email" id="emailP" name="emailP" required><br><br>
-        </div>
-            
-        <div>
-        <label for="tel">Phone number:</label>
-        <input type="tel" pattern="^0[0-9]{9}" id="tel" name="tel" required><br><br>
-        </div>
-            
-        <div>
-        <label for="job">Job:</label>
-        <input type="text" id="job" name="job" required><br><br>
-        </div>
-            
-        <div>
-        <label for="gender">Gender:</label>
-          <div>
-             <input type="radio" id="gender" name="gender" value="F"/>
-               <label for="Woman">Woman<br/></label>
-             <input type="radio" id="gender" name="gender" value="M"/>
-               <label for="Man">Man<br/></label>
-          </div>
-        </div>
-           
-        <div>
-        <label for="vc">Vaccination Center:</label>
-        <select id="vc" name="vc" required>
-          <option value="">Select Vaccine</option>
-         <% for (String vaccineCName : vaccineCNames) { %>
-        <option value="<%= vaccineCName %>"><%= vaccineCName %></option>
-           <% } %>
-         </select><br><br>
-        </div>
-            
-        <div>
-            <% if (request.getAttribute("msg") != null) { %>
-              <p><%= request.getAttribute("msg") %></p>
-             <% } %>
-        </div>
-            <input type="submit" value="Add medical staff">
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">Add Medical Staff</h2>
+        <form action="addPm" method="POST" class="lg:w-2/3 w-4/5 max-w-2xl bg-white p-8 mb-4 rounded-lg shadow-lg">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 mb-2">Email:</label>
+                    <input type="email" id="email" name="email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div class="mb-4">
+                    <label for="password" class="block text-gray-700 mb-2">Password:</label>
+                    <input type="password" id="password" name="password" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div class="mb-4">
+                    <label for="confirmPassword" class="block text-gray-700 mb-2">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div class="mb-4">
+                    <label for="fname" class="block text-gray-700 mb-2">First Name:</label>
+                    <input type="text" id="fname" name="fname" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div class="mb-4">
+                    <label for="lname" class="block text-gray-700 mb-2">Last Name:</label>
+                    <input type="text" id="lname" name="lname" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div class="mb-4">
+                    <label for="emailP" class="block text-gray-700 mb-2">Personnel Email:</label>
+                    <input type="email" id="emailP" name="emailP" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div class="mb-4">
+                    <label for="tel" class="block text-gray-700 mb-2">Phone Number:</label>
+                    <input type="tel" pattern="^0[0-9]{9}" id="tel" name="tel" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div class="mb-4">
+                    <label for="job" class="block text-gray-700 mb-2">Job:</label>
+                    <input type="text" id="job" name="job" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div class="mb-4">
+                    <label for="gender" class="block text-gray-700 mb-2">Gender:</label>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center">
+                            <input type="radio" id="gender-f" name="gender" value="F" class="mr-2">
+                            <label for="gender-f" class="text-gray-700">Woman</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="radio" id="gender-m" name="gender" value="M" class="mr-2">
+                            <label for="gender-m" class="text-gray-700">Man</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="vc" class="block text-gray-700 mb-2">Vaccination Center:</label>
+                    <select id="vc" name="vc" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">Select Vaccine</option>
+                        <% for (String vaccineCName : vaccineCNames) { %>
+                        <option value="<%= vaccineCName %>"><%= vaccineCName %></option>
+                        <% } %>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <% if (request.getAttribute("msg") != null) { %>
+                    <p class="text-red-500 mb-4"><%= request.getAttribute("msg") %></p>
+                <% } %>
+            </div>
+            <div class="text-center">
+                <input type="submit" value="Add Medical Staff" class="w-2/4 lg:w-1/3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 cursor-pointer">
+            </div>
         </form>
-    </body>
+    </div>
+</body>
 </html>
+

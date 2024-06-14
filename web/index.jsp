@@ -135,7 +135,7 @@
             <h2 class="text-3xl font-bold text-blue-800 mb-8 text-center">Quote</h2>
             <div class="flex flex-row items-center lg:gap-x-20 lg:mx-28">
                 <div class="hidden quote-image mb-8 lg:mb-0 md:flex">
-                    <img src="images/child-visiting-the-pediatrician.png" alt="Quote Image" class="lg:w-full lg:h-auto sm:w-4/5 sm:w-4/5 max-w-xl lg:">
+                    <img src="images/Playing.jpg" alt="Quote Image" class="lg:w-full lg:h-auto sm:w-4/5 sm:w-4/5 max-w-xl lg:">
                 </div>
                 <div class="quote-text lg:ml-8 text-center lg:text-left">
                     <p class="text-lg font-semibold text-gray-700">"Vaccines are the most cost-effective health care interventions there are. A dollar spent on a childhood vaccination not only helps save a life, but greatly reduces spending on future healthcare."</p>

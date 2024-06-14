@@ -39,7 +39,6 @@ public class addUser extends HttpServlet {
                 userId = resultSet.getInt("id");
             }
 
-            // Insert additional personal information into Parent table
             String insertParentQuery = "INSERT INTO `vax`.`Parent` (user_id, nomP, prenomP, numTelP, roleP, sexeP) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement parentStatement = conn.prepareStatement(insertParentQuery);
             parentStatement.setInt(1, userId);

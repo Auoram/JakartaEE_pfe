@@ -10,7 +10,7 @@
     <body class="bg-white">
         <header class="header flex justify-between items-center bg-blue-400 border-1 p-6">
             <div class="logo">
-                <a href="dashboard.jsp"><img src="images/whiteLogo.png" alt="Logo"></a>
+                <img src="images/whiteLogo.png" alt="Logo">
             </div>
             <div class="menu">
                 <img src="images/menu-white.svg" alt="Menu" onclick="toggleMenu()">
@@ -25,7 +25,7 @@
                         <p class="text-lg">Settings</p>
                     </a>
 
-                    <a href="index.jsp" class="border border-white p-4 mx-14 hover:bg-white">
+                    <a href="logOut.jsp" class="border border-white p-4 mx-14 hover:bg-white">
                         <p class="text-base">Log Out</p>
                     </a>
                 </div>
@@ -104,17 +104,17 @@
             <h1 class="text-blue-600 text-4xl text-center mb-8">Other types of vaccine information</h1>
             <div class="grid lg:grid-cols-3 grid-cols-1 text-center mb-6 gap-x-20 lg:px-32">
                 <div class="flex flex-col items-center gap-8 ml-2 mt-2 border border-gray-400 shadow-md p-4">
-                    <img src="images/bg-mom&baby.jpg" alt="profile-img" height="250" width="350" />
+                    <img src="images/img1.jpg" alt="profile-img" height="250" width="350" />
                     <h1 class="text-blue-600 text-2xl">Vaccines are Safe and Effective</h1>
                     <p class="text-gray-600 text-lg">Research and testing confirm vaccines's safety and efficacy in preventing childhood diseases. Thorough testing before approval and ongoing monitoring ensure their safety and effectiveness.</p>
                 </div>
                 <div class="flex flex-col items-center gap-8 ml-2 mt-2 border border-gray-400 shadow-md p-4">
-                    <img src="images/bg-mom&baby.jpg" alt="profile-img" height="250" width="350" />
+                    <img src="images/cost2.jpg" alt="profile-img" height="250" width="350" />
                     <h1 class="text-blue-600 text-2xl">Immunization Protects Against Serious Diseases</h1>
                     <p class="text-gray-600 text-lg">Vaccines trigger the immune system to create antibodies, offering lasting protection against particular pathogens. Following the recommended vaccination schedule safeguards children's health and community well-being.</p>
                 </div>
                 <div class="flex flex-col items-center gap-8 ml-2 mt-2 border border-gray-400 shadow-md p-4">
-                    <img src="images/bg-mom&baby.jpg" alt="profile-img" height="250" width="350" />
+                    <img src="images/Immunization.webp" alt="profile-img" height="250" width="350" />
                     <h1 class="text-blue-600 text-2xl">Vaccination Schedules Are Optimized</h1>
                     <p class="text-gray-600 text-lg">Vaccination schedules are meticulously planned to offer optimal disease protection early in life, guided by thorough research and immune system responsiveness.</p>
                 </div>

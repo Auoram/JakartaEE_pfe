@@ -24,130 +24,54 @@
 %>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Book Now</title>
-        <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-top: 50px;
-        }
-        .logo {
-            align-items: center;
-            margin-bottom: 25px;
-        }
-       .logo img {
-            height: 55px;
-        }
-        form{
-            width: 250px;
-            margin: 35px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-input[type="text"],
-input[type="date"],
-input[type="time"],
-select[id="vaccine"]{
-    display: block;
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-
-input[type="submit"] {
-    width: 25%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    margin-top: 20px;
-    margin-left: 37.5%;
-}
-
-input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-p {
-    color: red;
-}
-
-@media only screen and (min-width: 768px) {
-    form {
-        width: 600px;
-        margin: 35px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-
-    form > div {
-        width: calc(50% - 10px);
-    }
-    }
-        </style>
-    </head>
-    <body>
-    <div class="container">
-        <div class="logo">
-            <a href="index.html"><img src="images/logo-img.png" alt="Logo"></a>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Cancel Appointment</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-blue-100 bg-opacity-20">
+    <div class="flex flex-col justify-center items-center mt-16 py-4">
+        <div class="mb-14">
+                <img src="images/logo-img.png" alt="Logo" class="h-14">
         </div>
-        <h2>Cancel Appointment</h2>
+        <h2 class="text-2xl font-bold text-blue-900 mb-6">Cancel Appointment</h2>
+        <form action="cancelAppointment" method="POST" class="lg:w-2/3 w-4/5 max-w-2xl bg-white p-8 mb-4 rounded-lg shadow-lg">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+                <div class="mb-4">
+                    <label for="date" class="block text-gray-700 mb-2">Date:</label>
+                    <input type="date" id="date" name="date" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="time" class="block text-gray-700 mb-2">Time:</label>
+                    <input type="time" id="time" name="time" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="centre" class="block text-gray-700 mb-2">Vaccination Center:</label>
+                    <input type="text" id="centre" name="centre" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="child" class="block text-gray-700 mb-2">Child Name:</label>
+                    <input type="text" id="child" name="child" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-4">
+                    <label for="vaccine" class="block text-gray-700 mb-2">Vaccine:</label>
+                    <select id="vaccine" name="vaccine" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">Select Vaccine</option>
+                        <% for (String vaccineName : vaccineNames) { %>
+                            <option value="<%= vaccineName %>"><%= vaccineName %></option>
+                        <% } %>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-4">
+                <% if (request.getAttribute("msg") != null) { %>
+                    <p class="text-red-500 mb-4"><%= request.getAttribute("msg") %></p>
+                <% } %>
+            </div>
+            <div class="text-center">
+                <input type="submit" value="Cancel appointment" class="w-2/4 lg:w-1/3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 cursor-pointer">
+            </div>
+        </form>
     </div>
-    <form action="cancelAppointment" method="POST"> 
-        <div>
-            <label for="date">Date:</label>
-            <input type="date" id="date" name="date" required><br><br>
-        </div>
-        <div>
-            <label for="time">Time:</label>
-            <input type="time" id="time" name="time" required><br><br>
-        </div>
-        <div>
-            <label for="centre">Vaccination Center:</label>
-            <input type="text" id="centre" name="centre" required><br><br>
-        </div>
-        <div>
-            <label for="child">Child Name:</label>
-            <input type="text" id="child" name="child" required><br><br>
-        </div>
-        <div>
-            <label for="vaccine">Vaccine:</label>
-          <select id="vaccine" name="vaccine" required>
-          <option value="">Select Vaccine</option>
-         <% for (String vaccineName : vaccineNames) { %>
-        <option value="<%= vaccineName %>"><%= vaccineName %></option>
-           <% } %>
-         </select><br><br>
-        </div>
-         <div>
-            <% if (request.getAttribute("msg") != null) { %>
-              <p><%= request.getAttribute("msg") %></p>
-             <% } %>
-        </div>
-        <input type="submit" value="Cancel appointment">
-    </form>
 </body>
 </html>

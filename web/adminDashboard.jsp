@@ -74,10 +74,10 @@
         <div class="container-fluid">
         <div class="container-head bg-blue-400 py-4">
         <div class="logo">
-            <a href="adminDashboard.jsp"><img src="images/whiteLogo.png" alt="Logo"></a>
+            <img src="images/whiteLogo.png" alt="Logo">
         </div>
         <div class="ml-auto">
-        <a href="index.html" class="text-white font-bold border-2 border-white p-4 hover:bg-blue-100 hover:text-blue-400">Logout</a>
+        <a href="logOut.jsp" class="text-white font-bold border-2 border-white p-4 hover:bg-blue-100 hover:text-blue-400">Logout</a>
     </div>
     </div>
            <div class="flex justify-between">

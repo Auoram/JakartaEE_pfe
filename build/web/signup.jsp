@@ -81,13 +81,13 @@
                 </div>
             </div>
         </div>
-        
+        </div>
         <div>
             <% if (request.getAttribute("msg") != null) { %>
                 <p class="text-red-500 mb-4"><%= request.getAttribute("msg") %></p>
             <% } %>
         </div>
-        </div>
+        
         <div class="text-center">
             <input type="submit" value="Add User" class="w-2/4 lg:w-1/3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 cursor-pointer">
         </div>

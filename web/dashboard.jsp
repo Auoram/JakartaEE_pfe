@@ -26,7 +26,7 @@
 <div class="container-fluid">
         <header class="header flex justify-between items-center bg-blue-400 border-1 p-6">
             <div class="logo">
-                <a href="dashboard.jsp"><img src="images/whiteLogo.png" alt="Logo"></a>
+                <img src="images/whiteLogo.png" alt="Logo">
             </div>
             <div class="menu">
                 <img src="images/menu-white.svg" alt="Menu" onclick="toggleMenu()">
@@ -41,7 +41,7 @@
                         <p class="text-lg">Settings</p>
                     </a>
 
-                    <a href="index.html" class="border border-white p-4 mx-14 hover:bg-white">
+                    <a href="logOut.jsp" class="border border-white p-4 mx-14 hover:bg-white">
                         <p class="text-base">Log Out</p>
                     </a>
                 </div>
