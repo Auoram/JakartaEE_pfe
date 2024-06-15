@@ -79,7 +79,7 @@
                 <% } %>
             </div>
             <div class="text-center">
-                <input type="submit" value="Reschedule appointment" class="w-2/4 lg:w-1/3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 cursor-pointer">
+                <input type="submit" value="Reschedule appointment" class="w-3/4 lg:w-1/3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 cursor-pointer">
             </div>
         </form>
     </div>

@@ -21,7 +21,8 @@
                 <img src="images/logo-img.png" alt="Logo" class="h-14">
         </div>
         <h2 class="text-2xl font-bold text-blue-900 mb-6">Modify Account Info</h2>
-        <form action="ModifyInfo" method="POST" class="w-full max-w-lg bg-white p-8 mb-4 rounded-lg shadow-lg">
+        <form action="ModifyInfo" method="POST" class="lg:w-full w-3/4 max-w-lg bg-white p-8 mb-4 rounded-lg shadow-lg">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
             <div class="mb-4">
                 <label for="email" class="block text-gray-700 mb-2">Email:</label>
                 <input type="email" id="email" name="email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -44,23 +45,29 @@
             
             <div class="mb-4">
                 <label for="rs" class="block text-gray-700 mb-2">Relationship to child:</label>
-                <div>
+                <div class="flex flex-col space-y-2">
+                    <div class="flex items-center">
                     <input type="radio" id="rs_mother" name="rs" value="Mother" class="mr-1">
                     <label for="rs_mother" class="mr-4">Mother</label>
+                    </div>
+                    <div class="flex items-center">
                     <input type="radio" id="rs_father" name="rs" value="Father" class="mr-1">
                     <label for="rs_father" class="mr-4">Father</label>
+                    </div>
+                    <div class="flex items-center">
                     <input type="radio" id="rs_guardian" name="rs" value="Guardian" class="mr-1">
                     <label for="rs_guardian">Guardian</label>
+                    </div>
                 </div>
             </div>
-            
+            </div>
             <div class="mb-4">
                 <% if (request.getAttribute("msg") != null) { %>
                     <p class="text-red-500"><%= request.getAttribute("msg") %></p>
                 <% } %>
             </div>
             <div class="text-center">
-                <input type="submit" value="Apply Modifications" class="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 cursor-pointer">
+                <input type="submit" value="Apply Modifications" class="w-2/4 lg:w-2/4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 cursor-pointer">
             </div>
         </form>
     </div>

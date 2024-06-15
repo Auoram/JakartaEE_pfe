@@ -56,8 +56,8 @@
                 
                 rs.next();
                 %>
-    <div class="gap-16 lg:gap-48 p-4 ml-8 lg:ml-20 flex items-center">
-        <div class="relative flex flex-1 flex-col gap-6">
+    <div class="p-4 ml-8 lg:ml-20 flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-48">
+        <div class="flex flex-1 flex-col gap-6">
             <div class='flex items-center'>
                 <p class="lg:bold-18 bold-16 text-blue-40" style="min-width: 200px;">Full name :</p>
                 <p class="regular-16 text-gray-600"> <%= firstName %> <%= rs.getString("prenomP") %></p>
