@@ -338,6 +338,46 @@
           </form>
         </div>
     </div>
+                
+     <div class="card">
+        <div class="card-title">Change Child SMI Number</div>
+        <div class="select-container">
+            <form action="UpdateChildSMI" method="post" class="mb-6 mt-6 ml-8 lg:mx-20">
+                <div class="flex flex-row gap-20 mb-8">
+                    <label for="childSelect" class="select-label text-xl mr-4">Select Child:</label>
+                    <select name="childId" id="childSelect">
+                        <% try {
+                            Connection_Db.Connect();
+                            Connection conn = Connection_Db.conn;
+
+                            String selectChildrenQuery = "SELECT idE, nomCompletE FROM `vax`.`Enfant`";
+                            PreparedStatement childrenStmt = conn.prepareStatement(selectChildrenQuery);
+                            ResultSet childrenRs = childrenStmt.executeQuery();
+                            while (childrenRs.next()) {
+                                int id = childrenRs.getInt("idE");
+                                String name = childrenRs.getString("nomCompletE");
+                        %>
+                        <option value="<%= id %>"><%= name %></option>
+                        <% }
+                            childrenRs.close();
+                            childrenStmt.close();
+                            conn.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                            out.println("Error fetching child information. Please try again.");
+                        } %>
+                    </select>
+                </div>
+                <div class="flex flex-row gap-32">
+                    <label for="smiInput" class="select-label text-xl mr-2">New SMI Number:</label>
+                    <input type="text" name="newSMI" id="smiInput" class="border border-gray-300 rounded-md px-3 py-2">
+                </div>
+                <div class="card-content mt-6">
+                    <input type="submit" value="Update SMI Number" class="submit-btn bg-blue-400 border text-white font-bold rounded-lg pointer px-4 py-2 hover:bg-opacity-30 hover:text-blue-400">
+                </div>
+            </form>
+        </div>
+    </div>
     </div>
 </div>
 </div>

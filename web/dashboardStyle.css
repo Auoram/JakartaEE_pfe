@@ -11,7 +11,7 @@
         .menu img {
             cursor: pointer;
             height: 50px;
-            z-index: 3;
+            z-index: 10;
          }
          .menu-links {
             display: none;
@@ -25,6 +25,15 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+        }
+        .logout {
+            border: 1px solid white;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+         .logout:hover {
+            background-color: white;
+            color: blue;
         }
         .menu-links a {
             display: grid;

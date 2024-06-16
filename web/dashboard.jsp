@@ -45,9 +45,7 @@
                 <a href="addAnotherChild.jsp" class="mb-7 text-3xl">Add Child</a>
                 <a href="appointmentPage.jsp" class="mb-7 text-3xl">Appointment Management</a>
                 <a href="settings.jsp" class="mb-8 text-xl">Settings</a>
-                <div class="justify-center">
-                <a href="logOut.jsp" class="border border-white p-4 hover:bg-white text-xl hover:bg-opacity-50 lg:w-1/5 w-1/3">Log Out</a>
-                </div>
+                <a href="logOut.jsp" class="mb-8 text-xl logout">Log Out</a>
             </div>
         </div>
     </header>

@@ -41,7 +41,7 @@
                 <img src="images/logo-img.png" alt="Logo" class="h-14">
         </div>
         <h2 class="text-2xl font-bold text-blue-900 mb-6">Modify Account Info</h2>
-        <form action="modifyPM" method="POST" class="w-full max-w-lg bg-white p-8 mb-4 rounded-lg shadow-lg">
+        <form action="modifyPM" method="POST" class="lg:w-2/3 w-4/5 max-w-lg bg-white p-8 mb-4 rounded-lg shadow-lg">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
             <div class="mb-4">
                 <label for="emailP" class="block text-gray-700 mb-2">Personnel Email:</label>
@@ -61,7 +61,7 @@
             <div class="mb-4">
                 <label for="vc" class="block text-gray-700 mb-2">Vaccination Center:</label>
                 <select id="vc" name="vc" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option value="">Select Vaccine</option>
+                    <option value="">Select Vaccination center</option>
                     <% for (String vaccineCName : vaccineCNames) { %>
                         <option value="<%= vaccineCName %>"><%= vaccineCName %></option>
                     <% } %>
@@ -74,7 +74,7 @@
                 <% } %>
             </div>
             <div class="text-center">
-                <input type="submit" value="Submit Modification" class="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 cursor-pointer">
+                <input type="submit" value="Submit Modification" class="w-2/4 lg:w-2/3 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 cursor-pointer">
             </div>
         </form>
     </div>

@@ -15,13 +15,12 @@ public class ModifyChildInfo extends HttpServlet {
         String medicalInfo = request.getParameter("medicalInfo");
         String province = request.getParameter("province");
         String city = request.getParameter("city");
-        String numSMI = request.getParameter("numSMI");
         int idE = Integer.parseInt(request.getParameter("kidId"));
 
         try {
             Connection_Db.Connect();
             Connection conn = Connection_Db.conn;
-            String sql = "UPDATE `vax`.`Enfant` SET adresseE = ?, allergies = ?, groupeSang = ?, infoMedicaux = ?, province = ?, ville = ?, numSMI = ? WHERE idE = ?";
+            String sql = "UPDATE `vax`.`Enfant` SET adresseE = ?, allergies = ?, groupeSang = ?, infoMedicaux = ?, province = ?, ville = ? WHERE idE = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
 
             pstmt.setString(1, address);
@@ -30,8 +29,7 @@ public class ModifyChildInfo extends HttpServlet {
             pstmt.setString(4, medicalInfo);
             pstmt.setString(5, province);
             pstmt.setString(6, city);
-            pstmt.setString(7, numSMI);
-            pstmt.setInt(8, idE);
+            pstmt.setInt(7, idE);
 
             int rowsAffected = pstmt.executeUpdate();
 

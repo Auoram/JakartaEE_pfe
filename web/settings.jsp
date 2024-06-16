@@ -14,29 +14,23 @@
         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
         <link rel="stylesheet" href="dashboardStyle.css">
     </head>
-   <header class="header flex justify-between items-center bg-blue-400 border-1 p-6">
-            <div class="logo">
-                <img src="images/whiteLogo.png" alt="Logo">
+   <header class="header flex justify-between items-center bg-blue-400 p-6 relative">
+        <div class="logo">
+            <img src="images/whiteLogo.png" alt="Logo">
+        </div>
+        <div class="menu">
+            <img src="images/menu-white.svg" alt="Menu" onclick="toggleMenu()">
+            <div id="menuLinks" class="menu-links bg-blue-400 bg-opacity-90 pt-12">
+                <a href="dashboard.jsp" class="mb-7 text-3xl">Dashboard</a>
+                <a href="childProfile.jsp" class="mb-7 text-3xl">Child Profile</a>
+                <a href="VaxInfo.jsp" class="mb-7 text-3xl">Vaccination Information</a>
+                <a href="addAnotherChild.jsp" class="mb-7 text-3xl">Add Child</a>
+                <a href="appointmentPage.jsp" class="mb-7 text-3xl">Appointment Management</a>
+                <a href="settings.jsp" class="mb-8 text-xl">Settings</a>
+                <a href="logOut.jsp" class="mb-8 text-xl logout">Log Out</a>
             </div>
-            <div class="menu">
-                <img src="images/menu-white.svg" alt="Menu" onclick="toggleMenu()">
-                <div id="menuLinks" class="menu-links px-20 pt-14 bg-blue-400 right-0 w-auto flex flex-col gap-y-4 items-center justify-center text-3xl text-center" >
-                    <a href="dashboard.jsp" class="mb-7">Dashboard</a>
-                    <a href="childProfile.jsp" class="mb-7">Child Profile</a>
-                    <a href="VaxInfo.jsp" class="mb-7">Vaccination Information</a>
-                    <a href="addAnotherChild.jsp" class="mb-7">Add Child</a>
-                    <a href="appointmentPage.jsp" class="mb-7">Appointment Management</a>
-                    
-                    <a href="settings.jsp" class="mb-7">
-                        <p class="text-lg">Settings</p>
-                    </a>
-
-                    <a href="logOut.jsp" class="border border-white p-4 mx-14 hover:bg-white">
-                        <p class="text-base">Log Out</p>
-                    </a>
-                </div>
-            </div>
-        </header>
+        </div>
+    </header>
 <body>
     <div>
         <p class="text-gray-500 text-4xl my-5 ml-8 lg:ml-20">Account Settings</p>
