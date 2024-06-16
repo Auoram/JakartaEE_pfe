@@ -56,7 +56,7 @@
                 
                 rs.next();
                 %>
-    <div class="p-4 ml-8 lg:ml-20 flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-48">
+    <div class="p-4 ml-8 lg:ml-20 flex flex-col lg:flex-row items-start items-center gap-6 lg:gap-48">
         <div class="flex flex-1 flex-col gap-6">
             <div class='flex items-center'>
                 <p class="lg:bold-18 bold-16 text-blue-40" style="min-width: 200px;">Full name :</p>
@@ -93,8 +93,8 @@
     <div class="mx-3 mt-6 bg-white mb-8 border border-gray-100 shadow-lg rounded-lg">
           <h1 class="text-gray-500 text-3xl mt-5 ml-8 lg:ml-20">Password</h1>
           <div class="border border-gray-300 mt-5"></div>
-          <div class="gap-32 lg:gap-36 py-4 flex items-center">
-            <p class="relative flex flex-1 text-gray-500 regular-16 ml-8 lg:ml-20 my-10">Do you want to change your password ?</p>
+          <div class="gap-8 lg:gap-36 py-4 flex items-center flex flex-col lg:flex-row">
+            <p class="relative flex lg:flex-1 text-gray-500 regular-16 ml-8 lg:ml-20 my-10">Do you want to change your password ?</p>
             <div class="relative flex flex-1">
             <a href="newPassword.jsp" class="button border py-4 px-10 border-blue-400 font-bold text-blue-400 hover:bg-blue-100">Change Password</a>
             </div>
@@ -105,8 +105,8 @@
     <div class="mx-3 mt-6 bg-white mb-8 border border-gray-100 shadow-lg rounded-lg">
           <h1 class="text-gray-500 text-3xl mt-5 ml-8 lg:ml-20">Delete Account</h1>
           <div class="border border-gray-300 mt-5"></div>
-          <div class="gap-x-52 lg:gap-62 py-4 flex items-center">
-            <p class="relative flex flex-1 text-gray-500 regular-16 ml-8 lg:ml-20 my-10">Do you want to delete your account ?</p>
+          <div class="gap-x-52 lg:gap-62 py-4 flex flex-col lg:flex-row items-center">
+              <p class="relative flex lg:flex-1 text-gray-500 regular-16 ml-8 lg:ml-20 my-10">Do you want to delete your account ? <br> (By clicking on Delete your account will be deleted immediately)</p>
             <div class="relative flex flex-1">
             <form action="DeleteAccount" method="POST">
                     <input type="submit" value="Delete" class="button border py-4 px-14 border-red-600 bg-white font-bold text-red-600 hover:bg-red-100">

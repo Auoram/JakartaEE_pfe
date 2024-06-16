@@ -3,8 +3,18 @@
 <%@ page import="Children_Vax.Connection_Db" %>
 <%@ page import="java.sql.ResultSet" %>
 <%
+    if (session == null || session.getAttribute("email") == null) {
+        response.sendRedirect("index.jsp");
+        return;
+    }
+
     String firstName = (String) session.getAttribute("firstName");
     String email = (String) session.getAttribute("email");
+    Integer pId = (Integer) session.getAttribute("pId");
+    if (pId == null) {
+        pId = 0;
+    }
+    session.setAttribute("pId", pId);
 %>
 <!DOCTYPE html>
 <html>

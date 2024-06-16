@@ -11,22 +11,29 @@
         .menu img {
             cursor: pointer;
             height: 50px;
+            z-index: 3;
          }
          .menu-links {
-             position: fixed;
-             top: 56px;
             display: none;
-            height: 666px;
             z-index: 2;
+            position: absolute;
+            top: 98px;
+            right: 0;
+            width: 50%;
+            height: 100vh;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
         .menu-links a {
-           display: block;
-           color: white;
-           text-decoration: none;;
+            display: grid;
+            color: white;
+            text-decoration: none;
+            margin: 1rem 0;
         }
-
         .menu-links a:hover {
-            color: aquamarine;
+            color: darkblue;
         }
 .profile-avatar {
     width: 40px;

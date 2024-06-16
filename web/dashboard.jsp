@@ -7,12 +7,20 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%
+    if (session == null || session.getAttribute("email") == null) {
+        response.sendRedirect("index.jsp");
+        return;
+    }
     String firstName = (String) session.getAttribute("firstName");
     String email = (String) session.getAttribute("email");
-    int pId = (int) session.getAttribute("pId");
+    Integer pId = (Integer) session.getAttribute("pId");
+    if (pId == null) {
+        pId = 0;
+    }
     session.setAttribute("pId", pId);
+
     int newChildId = (request.getParameter("newChildId") != null) ? Integer.parseInt(request.getParameter("newChildId")) : 0;
-     session.setAttribute("newChildId", newChildId);
+    session.setAttribute("newChildId", newChildId);
 %>
 <!DOCTYPE html>
 <html>
@@ -24,35 +32,31 @@
 </head>
 <body class="bg-blue-100">
 <div class="container-fluid">
-        <header class="header flex justify-between items-center bg-blue-400 border-1 p-6">
-            <div class="logo">
-                <img src="images/whiteLogo.png" alt="Logo">
-            </div>
-            <div class="menu">
-                <img src="images/menu-white.svg" alt="Menu" onclick="toggleMenu()">
-                <div id="menuLinks" class="menu-links px-20 pt-14 bg-blue-400 right-0 w-auto flex flex-col gap-y-4 items-center justify-center text-3xl text-center" >
-                    <a href="dashboard.jsp" class="mb-7">Dashboard</a>
-                    <a href="childProfile.jsp" class="mb-7">Child Profile</a>
-                    <a href="VaxInfo.jsp" class="mb-7">Vaccination Information</a>
-                    <a href="addAnotherChild.jsp" class="mb-7">Add Child</a>
-                    <a href="appointmentPage.jsp" class="mb-7">Appointment Management</a>
-                    
-                    <a href="settings.jsp" class="mb-7">
-                        <p class="text-lg">Settings</p>
-                    </a>
-
-                    <a href="logOut.jsp" class="border border-white p-4 mx-14 hover:bg-white">
-                        <p class="text-base">Log Out</p>
-                    </a>
+        <header class="header flex justify-between items-center bg-blue-400 p-6 relative">
+        <div class="logo">
+            <img src="images/whiteLogo.png" alt="Logo">
+        </div>
+        <div class="menu">
+            <img src="images/menu-white.svg" alt="Menu" onclick="toggleMenu()">
+            <div id="menuLinks" class="menu-links bg-blue-400 bg-opacity-90 pt-12">
+                <a href="dashboard.jsp" class="mb-7 text-3xl">Dashboard</a>
+                <a href="childProfile.jsp" class="mb-7 text-3xl">Child Profile</a>
+                <a href="VaxInfo.jsp" class="mb-7 text-3xl">Vaccination Information</a>
+                <a href="addAnotherChild.jsp" class="mb-7 text-3xl">Add Child</a>
+                <a href="appointmentPage.jsp" class="mb-7 text-3xl">Appointment Management</a>
+                <a href="settings.jsp" class="mb-8 text-xl">Settings</a>
+                <div class="justify-center">
+                <a href="logOut.jsp" class="border border-white p-4 hover:bg-white text-xl hover:bg-opacity-50 lg:w-1/5 w-1/3">Log Out</a>
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
     <div class="content flex justify-between">
         <div id="notification" class="lg:w-2/3 w-2/3 rounded-xl px-6 py-6 bg-opacity-40"></div>
-        <div class="w-1/3">
+        <div class="w-1/3 ">
     <section class="profile-section mt-8 ml-8 bg-white border shadow-lg rounded-md">
             <div class="profile-info grid grid-col items-center justify-center gap-6 text-center pb-4">
-                <div class="profile-avatar ml-12 mt-4" id="profileAvatar"></div>
+                <div class="profile-avatar ml-14 mt-4" id="profileAvatar"></div>
                 <div class="grid grid-col gap-2">
                     <h1 id="firstName" class="text-2xl">Hello, <%= firstName %>!</h1>
                     <p class="text-base"><%= email %></p>
@@ -215,7 +219,8 @@ try {
         </section>
 
         <section class="vaccination-section mt-10">
-    <div class="bg-white relative flex flex-1 gap-2 mt-8 mr-8 border border-gray-40 shadow-lg rounded-md p-4 flex-col">
+    <div class="bg-white relative flex flex-1 gap-2 mt-8 mr-8 border border shadow-lg rounded-md p-4 flex-col">
+        <h2 class="my-8 lg:mx-20 ml-8  font-bold text-3xl">Vaccines to do</h2>
         <form action="#" method="post" class="mb-6 ml-8 lg:mx-20">
             <label for="childId" class="select-label text-xl mr-4">Select Child:</label>
             <select name="childId" id="childId" class="select-dropdown border border-blue-400 mr-4 rounded-md px-4 py-2">
@@ -288,27 +293,35 @@ try {
                     pstmt.setInt(2, calculatedAge);
                     pstmt.setInt(3, childId);
                     ResultSet rs = pstmt.executeQuery();
+                    int index = 0;
                     while (rs.next()) {
                 %>  
-                <h2 class="text-gray-500 mb-2 lg:ml-20 ml-8 text-xl"><%= rs.getString("nomV") %></h2>
-                    <div class="grid lg:grid-cols-3 grid-cols-1 text-center mb-3 gap-x-20 lg:px-32">
-                        <div class='grid gap-y-4 justify-items-center'>
-                            <img src="images/sideEffect.jpg" alt='Side Effect'/>
-                            <h3 class="text-blue-40">Side effects</h3>
-                            <p class="text-gray-600"><%= rs.getString("EffetSecondaire") %></p>
-                        </div>
-                        <div class='grid gap-y-4 justify-items-center'>
-                            <img src="images/recommend.jpg" alt='Recommendations'/>
-                            <h3 class="text-blue-40">Recommendations</h3>
-                            <p class="text-gray-600"><%= rs.getString("descr") %></p>
-                        </div>
-                        <div class='grid gap-y-4 justify-items-center'>
-                            <img src="images/PreDi.jpg" alt='Preventable Diseases'/>
-                            <h3 class="text-blue-40">Preventable diseases</h3>
-                            <p class="text-gray-600"><%= rs.getString("maladieEvitable") %></p>
+                <div class="border border-gray-300 shadow-lg mb-6 p-4 rounded-md">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl text-gray-500"><%= rs.getString("nomV") %></h3>
+                        <div onclick="toggleDescription(<%= index %>)" class="hover:cursor-pointer">
+                            <img src="images/close.svg" alt="plus" height="30" width="30" />
                         </div>
                     </div>
+                    <div id="description-<%= index %>" class="mt-4 hidden">
+                        <div class="grid lg:grid-row grid-cols-1 text-center mb-3 gap-y-6 lg:ml-20">
+                            <div class='grid gap-y-4 justify-items-center lg:text-left lg:justify-items-start'>
+                                <h3 class="text-blue-500 text-lg font-medium">Side effects</h3>
+                                <p class="text-gray-600 text-md"><%= rs.getString("EffetSecondaire") %></p>
+                            </div>
+                            <div class='grid gap-y-4 justify-items-center lg:text-left lg:justify-items-start'>
+                                <h3 class="text-blue-500 text-lg font-medium">Recommendations</h3>
+                                <p class="text-gray-600 text-md"><%= rs.getString("descr") %></p>
+                            </div>
+                            <div class='grid gap-y-4 justify-items-center lg:text-left lg:justify-items-start'>
+                                <h3 class="text-blue-500 text-lg font-medium">Preventable diseases</h3>
+                                <p class="text-gray-600 text-md"><%= rs.getString("maladieEvitable") %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <%
+                    index++;
                     }
                     pstmt.close();
                 } else {
@@ -341,6 +354,16 @@ try {
             <% } %>
         });
     </script>
+    <script>
+function toggleDescription(index) {
+    var description = document.getElementById('description-' + index);
+    if (description.classList.contains('hidden')) {
+        description.classList.remove('hidden');
+    } else {
+        description.classList.add('hidden');
+    }
+}
+</script>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         var firstName = "<%= firstName %>";

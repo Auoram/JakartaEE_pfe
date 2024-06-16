@@ -20,17 +20,18 @@
             </a>
         </div>
         <h2 class="text-2xl font-bold text-blue-900 mb-6">Login</h2>
-        <form action="Login" method="POST" class="w-90 p-8 bg-white rounded-lg shadow-lg">
+        <form action="Login" method="POST" class="w-96 p-8 bg-white rounded-lg shadow-lg min-h-90">
             <label for="email" class="block text-gray-700 mb-2">Email</label>
             <input type="email" name="email" id="email" class="w-full px-3 py-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
             
             <label for="password" class="block text-gray-700 mb-2">Password</label>
             <input type="password" name="password" id="password" class="w-full px-3 py-2 mb-8 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
             
+            <div class="mb-4 mt-4">
             <% if (request.getAttribute("msg") != null) { %>
-                <p class="text-red-500 mb-4"><%= request.getAttribute("msg") %></p>
+                <p class="text-red-500"><%= request.getAttribute("msg") %></p>
             <% } %>
-            
+            </div>
             <input type="submit" value="Login" class="w-full py-2 mb-6 bg-blue-500 text-white rounded-md hover:bg-blue-600 cursor-pointer">
             
             <div>

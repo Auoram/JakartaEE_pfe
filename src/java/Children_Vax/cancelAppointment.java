@@ -47,11 +47,15 @@ public class cancelAppointment extends HttpServlet {
         pstmt.setInt(2, centreId);
         pstmt.setInt(3, childId);
         pstmt.setInt(4, vaccineId);
-        pstmt.executeUpdate();
+        int i=pstmt.executeUpdate();
         pstmt.close();
         conn.close();
-
+        if (i>0){
         response.sendRedirect("appointmentPage.jsp");
+        }else{
+        request.setAttribute("msg", "appointment doesn't exist. Please try again.");
+        request.getRequestDispatcher("cancelit.jsp").forward(request, response);
+        }
     } catch (SQLException e) {
         e.printStackTrace();
         request.setAttribute("msg", "Error canceling appointment. Please try again.");

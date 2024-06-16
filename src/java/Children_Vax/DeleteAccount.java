@@ -26,7 +26,7 @@ public class DeleteAccount extends HttpServlet {
             HttpSession session = request.getSession();
             session.invalidate();
 
-            response.sendRedirect("index.html");
+            response.sendRedirect("index.jsp");
         } catch (SQLException e) {
             e.printStackTrace();
 
