@@ -1,12 +1,31 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import ="java.sql.*" %>    
+<%@ page import ="java.sql.*, java.util.*" %>    
 <%@ page import="java.sql.Connection" %>
 <%@ page import="Children_Vax.Connection_Db" %>
 <%@ page import="java.sql.ResultSet" %>
 <%
     int pId = (int) session.getAttribute("pId");
     session.setAttribute("pId", pId);
-    %>
+    List<String> vaccineCNames = new ArrayList<>();
+    try {
+        Connection_Db.Connect();
+        Connection conn = Connection_Db.conn;
+        
+        String selectVaccineCNamesQuery = "SELECT nomC FROM `vax`.`CentreVax`";
+        PreparedStatement stmt = conn.prepareStatement(selectVaccineCNamesQuery);
+        ResultSet res = stmt.executeQuery();
+
+        while (res.next()) {
+            vaccineCNames.add(res.getString("nomC"));
+        }
+
+        res.close();
+        stmt.close();
+        conn.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -64,8 +83,13 @@
         </div>
             
         <div class="mb-4">
-        <label for="Cvax" class="block text-gray-700 mb-2">Centre de vaccination</label>
-        <input type="text" id="Cvax" name="Cvax" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"><br><br>
+        <label for="Cvax" class="block text-gray-700 mb-2">Vaccination Center</label>
+        <select id="Cvax" name="Cvax" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="">Select Vaccination center</option>
+            <% for (String vaccineCName : vaccineCNames) { %>
+            <option value="<%= vaccineCName %>"><%= vaccineCName %></option>
+            <% } %>
+        </select><br><br>
         </div>
         
         <div class="mb-4">

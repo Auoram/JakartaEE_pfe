@@ -47,7 +47,7 @@
         <p class="text-lg text-gray-600">Our website is here to help you manage your children's<br/> vaccination schedule</p>
     </section>
 
-    <div class="bg-green-100 bg-opacity-25 xl:mx-28 my-auto px-4 justify-center gap-y-20 sm:py-12 lg:px-8 pb-32 lg:py-16">
+    <div class="bg-green-100 bg-opacity-25 xl:mx-28 my-auto px-4 justify-center gap-y-20 py-12 lg:px-8 pb-32 lg:py-16">
         <section id="section1" class="flex max-container padding-container items-center gap-10 m-10 hidden-section">
             <div class="relative z-20 flex flex-1 flex-col gap-7">
                 <img src="images/baby_1.jpg" alt="image-1" class="w-[400px] h-auto">

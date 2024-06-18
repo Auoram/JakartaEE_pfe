@@ -19,8 +19,6 @@
             position: absolute;
             top: 98px;
             right: 0;
-            width: 50%;
-            height: 100vh;
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -91,7 +89,7 @@ child-page-section{
             font-weight: bold;
             background-color: #89CFF0;
             transform: translate(-50%,-50%);
-            color: white;
+            color: darkblue;
             text-align: center;
             z-index: 2000;
         }

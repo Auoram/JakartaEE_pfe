@@ -108,7 +108,7 @@
                 
                 <div class="card">
                    <div class="card-title">Delete Medical Staff</div>
-                   <a href="#" onclick="showDeleteForm()" class="submit-btn bg-blue-400 border text-white font-bold rounded-lg pointer px-10 py-3 hover:bg-opacity-30 hover:text-blue-400">Choose Medical Staff</a>
+                   <a href="#" onclick="showDeleteForm()" class="submit-btn bg-blue-400 border text-white font-bold rounded-lg pointer px-10 py-3 hover:bg-opacity-30 hover:text-blue-400">Choose Staff</a>
                    <div id="deleteForm" class="mt-8" style="display: none;">
                        <form action="DeletePM" method="POST"> 
                             <input type="email" name="emailToDelete" id="emailToDelete" placeholder="Enter Professional Email">

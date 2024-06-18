@@ -38,23 +38,23 @@
         </div>
         <div class="menu">
             <img src="images/menu-white.svg" alt="Menu" onclick="toggleMenu()">
-            <div id="menuLinks" class="menu-links bg-blue-400 bg-opacity-90 pt-12">
-                <a href="dashboard.jsp" class="mb-7 text-3xl">Dashboard</a>
-                <a href="childProfile.jsp" class="mb-7 text-3xl">Child Profile</a>
-                <a href="VaxInfo.jsp" class="mb-7 text-3xl">Vaccination Information</a>
-                <a href="addAnotherChild.jsp" class="mb-7 text-3xl">Add Child</a>
-                <a href="appointmentPage.jsp" class="mb-7 text-3xl">Appointment Management</a>
-                <a href="settings.jsp" class="mb-8 text-xl">Settings</a>
-                <a href="logOut.jsp" class="mb-8 text-xl logout">Log Out</a>
+            <div id="menuLinks" class="menu-links bg-blue-400 bg-opacity-90 pt-10">
+                <a href="dashboard.jsp" class="mb-6 text-3xl">Dashboard</a>
+                <a href="childProfile.jsp" class="mb-6 text-3xl">Child Profile</a>
+                <a href="VaxInfo.jsp" class="mb-6 text-3xl">Vaccination Information</a>
+                <a href="addAnotherChild.jsp" class="mb-6 text-3xl">Add Child</a>
+                <a href="appointmentPage.jsp" class="mb-6 text-3xl">Appointment Management</a>
+                <a href="settings.jsp" class="mb-7 text-xl">Settings</a>
+                <a href="logOut.jsp" class="mb-4 text-xl logout">Log Out</a>
             </div>
         </div>
     </header>
     <div class="content flex justify-between">
         <div id="notification" class="lg:w-2/3 w-2/3 rounded-xl px-6 py-6 bg-opacity-40"></div>
-        <div class="w-1/3 ">
-    <section class="profile-section mt-8 ml-8 bg-white border shadow-lg rounded-md">
+        <div class="w-1/3">
+    <section class="profile-section mt-8 lg:ml-8 ml-2 bg-white border shadow-lg rounded-md">
             <div class="profile-info grid grid-col items-center justify-center gap-6 text-center pb-4">
-                <div class="profile-avatar ml-14 mt-4" id="profileAvatar"></div>
+                <a href="settings.jsp"><div class="profile-avatar ml-14 mt-4" id="profileAvatar"></div></a>
                 <div class="grid grid-col gap-2">
                     <h1 id="firstName" class="text-2xl">Hello, <%= firstName %>!</h1>
                     <p class="text-base"><%= email %></p>
@@ -90,7 +90,7 @@ try {
                 String centerName = rs.getString("centerName");
                 count++;
     %>
-    <div class="appointment-card mt-8 ml-8 bg-white border shadow-lg rounded-md">
+    <div class="appointment-card mt-8 lg:ml-8 ml-2 bg-white border shadow-lg rounded-md">
         <h2 class="text-2xl font-bold mb-4 my-8 lg:mx-10 ml-4">Appointment n° <%= count %></h2>
         <div class="appointment lg:mx-10 ml-4 mb-4 grid gap-y-4">
             <h1 class="text-xl text-gray-500"><%= vaccineName %></h1>
@@ -110,11 +110,11 @@ try {
     }
     %>
 </section>
-    <section class="download mt-8 ml-8 bg-white border shadow-lg rounded-md">
+    <section class="download mt-8 lg:ml-8 ml-2 bg-white border shadow-lg rounded-md">
                 <h1 class="text-2xl font-bold mb-8 my-8 lg:mx-10 ml-4">Download Records</h1>
                 <form action="DownloadRecords" method="post" class="mb-6 ml-4 lg:mx-10">
                     <label for="childId" class="select-label text-xl mr-4">Select Child:</label>
-                    <select name="childId" id="childId" class="select-dropdown border border-blue-400 mr-4 rounded-md px-4 py-2" required>
+                    <select name="childId" id="childId" class="select-dropdown border border-blue-400 mr-4 rounded-md lg:px-4 px-1 py-2" required>
                         <% 
                             try {
                                 Connection_Db.Connect();
@@ -142,8 +142,8 @@ try {
     </section>
         </div>
         <div class="w-3/5">
-    <section class="child-profile-section mt-8 mr-8 bg-white border shadow-lg rounded-md">
-    <h2 class="my-8 lg:mx-20 ml-8  font-bold text-3xl">Child's Profile</h2>
+    <section class="child-profile-section mt-8 lg:mr-8 mr-2 bg-white border shadow-lg rounded-md">
+    <h2 class="my-8 lg:mx-20 ml-8 font-bold text-3xl">Child's Profile</h2>
     
     <form action="#" method="post" class="mb-6 ml-8 lg:mx-20">
         <label for="childId" class="select-label text-xl mr-4">Select Child:</label>
@@ -217,7 +217,7 @@ try {
         </section>
 
         <section class="vaccination-section mt-10">
-    <div class="bg-white relative flex flex-1 gap-2 mt-8 mr-8 border border shadow-lg rounded-md p-4 flex-col">
+    <div class="bg-white relative flex flex-1 gap-2 mt-8 lg:mr-8 mr-2 border border shadow-lg rounded-md lg:p-4 p-2 flex-col">
         <h2 class="my-8 lg:mx-20 ml-8  font-bold text-3xl">Vaccines to do</h2>
         <form action="#" method="post" class="mb-6 ml-8 lg:mx-20">
             <label for="childId" class="select-label text-xl mr-4">Select Child:</label>
