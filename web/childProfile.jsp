@@ -23,14 +23,14 @@
         </div>
         <div class="menu">
             <img src="images/menu-white.svg" alt="Menu" onclick="toggleMenu()">
-            <div id="menuLinks" class="menu-links w-1/2 h-3/4 bg-blue-400 bg-opacity-90 pt-12 px-4 lg:px-0">
+            <div id="menuLinks" class="menu-links w-1/2 h-svh bg-blue-400 pt-10 pb-8 px-6">
                 <a href="dashboard.jsp" class="mb-6 text-3xl">Dashboard</a>
                 <a href="childProfile.jsp" class="mb-6 text-3xl">Child Profile</a>
                 <a href="VaxInfo.jsp" class="mb-6 text-3xl">Vaccination Information</a>
                 <a href="addAnotherChild.jsp" class="mb-6 text-3xl">Add Child</a>
                 <a href="appointmentPage.jsp" class="mb-6 text-3xl">Appointment Management</a>
                 <a href="settings.jsp" class="mb-7 text-xl">Settings</a>
-                <a href="logOut.jsp" class="mb-4 text-xl logout">Log Out</a>
+                <a href="logOut.jsp" class="mb-7 text-xl logout">Log Out</a>
             </div>
         </div>
         </header>
@@ -209,13 +209,13 @@
 
     <section class="quote-section mt-8 mb-8 mx-8 bg-white border shadow-lg rounded-md pb-8">
     <h2 class="my-8 lg:mx-28 ml-8 font-bold text-3xl">Quote</h2>
-    <div class="flex lg:mx-28 ml-8 lg:gap-x-20">
+    <div class="flex lg:flex-row flex-col lg:mx-28 ml-8 lg:gap-x-20">
         <div class="quote-image relative">
             <img src="images/computer.png" alt="Quote Image">
         </div>
         <div class="quote-text mt-14">
-            <p class="text-lg font-semibold">"Vaccines are the most cost-effective health care interventions there are.A dollar spent on a childhood vaccination not only helps save a life, but greatly reduces spending on future healthcare."</p>
-            <p class="text-sm mt-8">Ezekiel Emanuel</p>
+            <p class="text-lg font-semibold">"Vaccines are one of the greatest success stories in public health. They have saved millions of lives and prevented countless cases of disease. Immunizing children is a crucial step in giving them a healthy start in life."</p>
+            <p class="text-sm mt-8">Dr. Thomas Frieden</p>
         </div>
     </div>
 </section>

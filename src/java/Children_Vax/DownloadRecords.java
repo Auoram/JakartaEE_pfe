@@ -8,7 +8,7 @@ import jakarta.servlet.http.*;
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.*;
 import static java.awt.Color.LIGHT_GRAY;
-import static java.awt.Color.BLUE;
+import java.awt.Color;
 
 public class DownloadRecords extends HttpServlet {
     @Override
@@ -25,6 +25,13 @@ public class DownloadRecords extends HttpServlet {
             Document document = new Document();
             PdfWriter.getInstance(document, out);
             document.open();
+            
+            Image img = Image.getInstance("C:\\Users\\lenovo\\OneDrive\\Documents\\NetBeansProjects\\My_PFE\\web\\images\\MS-Maroc.png");
+            img.scaleToFit(100, 100);
+            img.setAlignment(Element.ALIGN_CENTER);
+            document.add(img);
+            
+            Color darkBlue = new Color(0, 0, 139);
 
             String childQuery = "SELECT * FROM `vax`.`Enfant` WHERE idE = ?";
             PreparedStatement childStmt = conn.prepareStatement(childQuery);
@@ -32,10 +39,10 @@ public class DownloadRecords extends HttpServlet {
             ResultSet childRs = childStmt.executeQuery();
 
             if (childRs.next()) {
-                document.add(new Paragraph("Vaccination Record", FontFactory.getFont(FontFactory.HELVETICA_BOLD,24,BLUE)));
-                document.add(new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
-                document.add(new Paragraph("Child Information", FontFactory.getFont(FontFactory.HELVETICA_BOLD,18,BLUE)));
-                document.add(new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
+                document.add(new Paragraph("Vaccination Record", FontFactory.getFont(FontFactory.HELVETICA_BOLD,24,darkBlue)));
+                document.add(new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA)));
+                document.add(new Paragraph("Child Information", FontFactory.getFont(FontFactory.HELVETICA_BOLD,18,darkBlue)));
+                document.add(new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA)));
                 document.add(new Paragraph("Name: " + childRs.getString("nomCompletE"),FontFactory.getFont(FontFactory.HELVETICA,15)));
                 document.add(new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA,5)));
                 document.add(new Paragraph("Date of Birth: " + childRs.getDate("dateNaiss"),FontFactory.getFont(FontFactory.HELVETICA,15)));
@@ -68,44 +75,42 @@ public class DownloadRecords extends HttpServlet {
             ResultSet vaxHistoryRs = vaxHistoryStmt.executeQuery();
 
             if (vaxHistoryRs.next()) {
-                document.add(new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
-                document.add(new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
-                document.add(new Paragraph("Vaccination History", FontFactory.getFont(FontFactory.HELVETICA_BOLD,18,BLUE)));
-                document.add(new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
-                document.add(new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
+                document.add(new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA)));
+                document.add(new Paragraph("Vaccination History", FontFactory.getFont(FontFactory.HELVETICA_BOLD,18,darkBlue)));
+                document.add(new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA)));
 
                 PdfPTable table = new PdfPTable(3);
                 table.setWidthPercentage(100);
 
                 PdfPCell cell = new PdfPCell(new Phrase("Date",FontFactory.getFont(FontFactory.HELVETICA_BOLD,15)));
                 cell.setBackgroundColor(LIGHT_GRAY);
-                cell.setPadding(12);
+                cell.setPadding(8);
                 table.addCell(cell);
 
                 cell = new PdfPCell(new Phrase("Vaccine Name",FontFactory.getFont(FontFactory.HELVETICA_BOLD,15)));
                 cell.setBackgroundColor(LIGHT_GRAY);
-                cell.setPadding(12);
+                cell.setPadding(8);
                 table.addCell(cell);
 
                 cell = new PdfPCell(new Phrase("Vaccination Center",FontFactory.getFont(FontFactory.HELVETICA_BOLD,15)));
                 cell.setBackgroundColor(LIGHT_GRAY);
-                cell.setPadding(12);
+                cell.setPadding(8);
                 table.addCell(cell);
 
                 do {
                     String date = vaxHistoryRs.getString("dateR");
                     PdfPCell dateCell = new PdfPCell(new Phrase(date,FontFactory.getFont(FontFactory.HELVETICA,15)));
-                    dateCell.setPadding(12);
+                    dateCell.setPadding(10);
                     table.addCell(dateCell);
 
                     String vaccineName = vaxHistoryRs.getString("vaccineName");
                     PdfPCell vaccineNameCell = new PdfPCell(new Phrase(vaccineName,FontFactory.getFont(FontFactory.HELVETICA,15)));
-                    vaccineNameCell.setPadding(12);
+                    vaccineNameCell.setPadding(10);
                     table.addCell(vaccineNameCell);
 
                     String vaccinationCenter = vaxHistoryRs.getString("vaccinationCenter");
                     PdfPCell vaccinationCenterCell = new PdfPCell(new Phrase(vaccinationCenter,FontFactory.getFont(FontFactory.HELVETICA,15)));
-                    vaccinationCenterCell.setPadding(12);
+                    vaccinationCenterCell.setPadding(10);
                     table.addCell(vaccinationCenterCell);
                 } while (vaxHistoryRs.next());
 
@@ -118,6 +123,11 @@ public class DownloadRecords extends HttpServlet {
             vaxHistoryStmt.close();
 
             conn.close();
+            
+            document.add(new Paragraph("Signature :",FontFactory.getFont(FontFactory.HELVETICA_BOLD,16,darkBlue)));
+            document.add(new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
+            document.add(new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
+            document.add(new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA)));
 
             document.close();
         } catch (SQLException e) {

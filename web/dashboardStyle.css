@@ -37,7 +37,6 @@
             display: grid;
             color: white;
             text-decoration: none;
-            margin: 1rem 0;
         }
         .menu-links a:hover {
             color: darkblue;

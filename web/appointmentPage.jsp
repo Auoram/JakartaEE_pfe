@@ -20,14 +20,14 @@ int pId = (int) session.getAttribute("pId");
         </div>
         <div class="menu">
             <img src="images/menu-white.svg" alt="Menu" onclick="toggleMenu()">
-            <div id="menuLinks" class="menu-links bg-blue-400 bg-opacity-90 pt-12">
+            <div id="menuLinks" class="menu-links w-1/2 h-svh bg-blue-400 pt-10 pb-8 px-6">
                 <a href="dashboard.jsp" class="mb-6 text-3xl">Dashboard</a>
                 <a href="childProfile.jsp" class="mb-6 text-3xl">Child Profile</a>
                 <a href="VaxInfo.jsp" class="mb-6 text-3xl">Vaccination Information</a>
                 <a href="addAnotherChild.jsp" class="mb-6 text-3xl">Add Child</a>
                 <a href="appointmentPage.jsp" class="mb-6 text-3xl">Appointment Management</a>
                 <a href="settings.jsp" class="mb-7 text-xl">Settings</a>
-                <a href="logOut.jsp" class="mb-4 text-xl logout">Log Out</a>
+                <a href="logOut.jsp" class="mb-7 text-xl logout">Log Out</a>
             </div>
         </div>
         </header>
