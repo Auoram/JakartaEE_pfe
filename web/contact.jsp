@@ -90,7 +90,7 @@
                 <h2 class="text-xl font-bold mb-4">Get in Touch</h2>
                 <ul class="text-md space-y-2">
                     <li>Email: <a href="mailto:info@kidvax.com" class="hover:underline">info@kidvax.com</a></li>
-                    <li>Phone: <a href="tel:+212 0654789635" class="hover:underline">+212 0654789635</a></li>
+                    <li>Phone: <a href="tel:(+212) 0654789635" class="hover:underline">(+212) 0654789635</a></li>
                     <li>
                         Follow us:
                         <div class="flex space-x-4 mt-2">
