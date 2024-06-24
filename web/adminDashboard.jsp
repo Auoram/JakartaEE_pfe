@@ -92,8 +92,8 @@
           <div class="border border-gray-300 mt-5"></div>
           <div class="gap-14 lg:gap-20 py-4 pr-6 lg:flex items-center grid ">
             <p class="relative flex flex-1 text-gray-500 regular-16 ml-4 lg:ml-10 my-10">Do you want to change your password ?</p>
-            <div class="relative flex flex-1">
-            <a href="newPassword.jsp" class="button border py-4 px-8 border-blue-400 text-center font-bold text-blue-400 hover:bg-blue-100">Change Password</a>
+            <div class="relative flex flex-1 lg:ml-0 ml-2">
+            <a href="newPassword.jsp" class="button border lg:py-4 py-2 lg:px-8 px-4 border-blue-400 text-center font-bold text-blue-400 hover:bg-blue-100">Change Password</a>
             </div>
           </div>
         </div>

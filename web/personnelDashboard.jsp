@@ -122,8 +122,8 @@
           <div class="border border-gray-300 mt-5"></div>
           <div class="gap-8 lg:gap-20 py-4 pr-6 lg:flex items-center grid ">
             <p class="relative flex flex-1 text-gray-500 regular-16 ml-4 lg:ml-10 my-10">Do you want to change your password ?</p>
-            <div class="relative flex flex-1 sm:ml-2">
-            <a href="newPassword.jsp" class="border py-4 px-8 border-blue-400 text-center font-bold text-blue-400 hover:bg-blue-100">Change Password</a>
+            <div class="relative flex flex-1 lg:ml-0 ml-2">
+            <a href="newPassword.jsp" class="border lg:py-4 py-2 lg:px-8 px-4 border-blue-400 text-center font-bold text-blue-400 hover:bg-blue-100">Change Password</a>
             </div>
           </div>
         </div>
@@ -132,20 +132,20 @@
           <div class="border border-gray-300 mt-5"></div>
           <div class="gap-8 lg:gap-20 py-4 pr-6 lg:flex items-center grid ">
               <p class="relative flex flex-1 text-gray-500 regular-16 ml-4 lg:ml-10 my-10">Do you want to change some account information ?</p>
-            <div class="relative flex flex-1 sm:ml-2">
-            <a href="modifyPm.jsp" class="border py-4 px-8 border-blue-400 text-center font-bold text-blue-400 hover:bg-blue-100">Modify</a>
+            <div class="relative flex flex-1 lg:ml-0 ml-2">
+            <a href="modifyPm.jsp" class="border lg:py-4 py-2 lg:px-8 px-3 border-blue-400 text-center font-bold text-blue-400 hover:bg-blue-100">Modify</a>
             </div>
           </div>
         </div>
         </div>
-    <div class="dashboard-container w-4/5 bg-white mt-6 mr-8">
+    <div class="dashboard-container lg:w-4/5 w-3/5 bg-white mt-6 mr-8">
         <div class="section-title">Dashboard</div>
 
         <div class="card">
             <div class="card-title">Parents Information</div>
             <div class="select-container">
                 <form action="#" method="post" class="mb-6 mt-6 ml-8 lg:mx-20">
-                   <div class="flex flex-row">
+                   <div class="flex lg:flex-row flex-col">
     <label for="parentSelect" class="select-label text-xl mr-4">Select Parent:</label>
     <select name="parentId" id="parentId" class="select-dropdown border border-blue-400 mr-4 rounded-md px-4 py-2">
         <%
@@ -217,7 +217,7 @@
             <div class="card-title">Children Information</div>
             <div class="select-container">
 <form action="#" method="post" class="mb-6 mt-6 ml-8 lg:mx-20">
-                   <div class="flex flex-row">
+                   <div class="flex lg:flex-row flex-col">
     <label for="kidId" class="select-label text-xl mr-4">Select Child:</label>
     <select name="kidId" id="kidId" class="select-dropdown border border-blue-400 mr-4 rounded-md px-4 py-2">
             <%
@@ -299,7 +299,7 @@
         <div class="card-title">Change Appointment Status</div>
         <div class="select-container">
             <form action="UpdateAppStatus" method="post" class="mb-6 mt-6 ml-8 lg:mx-20">
-                <div class="flex flex-row gap-20 mb-8">
+                <div class="flex lg:flex-row flex-col lg:gap-20 gap-10 mb-8">
                 <label for="appointmentSelect" class="select-label text-xl mr-4">Select Appointment:</label>
                 <select name="appointmentId" id="appointmentSelect">
                     <% try {
@@ -324,7 +324,7 @@
                     } %>
                 </select>
                 </div>
-                <div class="flex flex-row gap-32">
+                <div class="flex lg:flex-row flex-col lg:gap-32 gap-12">
             <label for="statusSelect" class="select-label text-xl mr-2">Change Status:</label>
             <select name="newStatus" id="statusSelect">
                 <option value="scheduled">Scheduled</option>
@@ -343,7 +343,7 @@
         <div class="card-title">Change Child SMI Number</div>
         <div class="select-container">
             <form action="UpdateChildSMI" method="post" class="mb-6 mt-6 ml-8 lg:mx-20">
-                <div class="flex flex-row gap-20 mb-8">
+                <div class="flex lg:flex-row flex-col lg:gap-20 gap-10 mb-8">
                     <label for="childSelect" class="select-label text-xl mr-4">Select Child:</label>
                     <select name="childId" id="childSelect">
                         <% try {
@@ -368,7 +368,7 @@
                         } %>
                     </select>
                 </div>
-                <div class="flex flex-row gap-32">
+                <div class="flex lg:flex-row flex-col lg:gap-32 gap-12">
                     <label for="smiInput" class="select-label text-xl mr-2">New SMI Number:</label>
                     <input type="text" name="newSMI" id="smiInput" class="border border-gray-300 rounded-md px-3 py-2">
                 </div>
